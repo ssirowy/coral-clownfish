@@ -1,21 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Menu from './components/menu';
+import Game from './components/game';
+
 import './App.css';
 
+import { createStore } from 'redux';
+import { appStore } from './reducers';
+
+const store = createStore(appStore);
+
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+
+    constructor(props) {
+        super(props);
+
+        // Get initial state from Redux.
+        this.state = store.getState();
+
+        // Subscribe to updates to Redux store and update app state every time state changes.
+        store.subscribe(() => {
+            this.setState(store.getState());
+            console.log(store.getState());
+        });
+    }
+
+    render() {
+        return (
+            <div className="App">
+              <Menu games={this.state.games}
+                    currentGame={this.state.game}
+                    store={store} />
+              <section>
+                <Game game={this.state.game} store={store} />
+              </section>
+            </div>
+        );
+    }
 }
 
 export default App;

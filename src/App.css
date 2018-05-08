@@ -1,28 +1,118 @@
 .App {
-  text-align: center;
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: auto;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+section {
+    background-color: #EDECDA;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+nav {
+    color: #EDECDA;
+    background-color: #228B22;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
-.App-title {
-  font-size: 1.5em;
+body {
+    background-color: #F1F1F1;
+    font-family: 'Roboto', sans-serif;
 }
 
-.App-intro {
-  font-size: large;
+h2 {
+    text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.menu-label {
+    margin-bottom: 4px;
+    font-size: 12px;
+}
+
+.strategy-label {
+    margin-top: 32px;
+}
+
+.reset-button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    outline: inherit;
+    margin-top: 4px;
+    text-align: right;
+}
+
+.game-container {
+    background-color: white;
+    color: #004D00;
+    display: flex;
+    flex-direction: column;
+    width: 80vh;
+    height: 80vh;
+}
+
+.card {
+  background: #fff;
+  border-radius: 2px;
+  position: relative;
+}
+
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.game-row {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.game-cell {
+    cursor: pointer;
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
+    margin: 1px;
+}
+
+.constraint {
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.constraint.fulfilled {
+    color: #BBBBBB;
+    font-weight: bold;
+}
+
+.constraint.unfulfilled {
+    color: red;
+    font-weight: bold;
+}
+
+
+img {
+    max-width: 100%;
+}
+
+.green-1 {
+    background-color: #228B22;
+}
+
+.green-2 {
+    background-color: #004D00;
+}
+
+.black {
+    background-color: black;
 }
