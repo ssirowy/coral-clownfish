@@ -25,7 +25,7 @@ class Menu extends Component {
 
         return (
             <nav>
-              <h2>Shelters and shrubs</h2>
+              <h2>Coral and clownfish</h2>
               <div className='menu-label'>
                 Select preconfigured game
               </div>
@@ -44,9 +44,6 @@ class Menu extends Component {
               <div className='menu-label strategy-label'>
                 Select a strategy
               </div>
-
-
-
             </nav>
         );
     }

@@ -3,8 +3,8 @@ import { clickCell } from '../actions';
 
 import '../App.css';
 
-import coral from '../img/coral.svg';
-import clownfish from '../img/clownfish.svg';
+import coral from '../img/coral.png';
+import clownfish from '../img/clownfish.png';
 
 class Cell extends Component {
 
@@ -28,10 +28,10 @@ class Cell extends Component {
                 </div>
             );
         }
-        else if (cell.type === 'shelter') {
+        else if (cell.type === 'clownfish') {
             return (
                 <div className="game-cell" onClick={() => this.props.store.dispatch(clickCell(this.props.row, this.props.col))}>
-                  <img src={shelter} />
+                  <img src={clownfish} />
                 </div>
             );
         }

@@ -6,21 +6,24 @@
 }
 
 section {
-    background-color: #EDECDA;
+    background-color: #F1FAFF;
     align-items: center;
     display: flex;
     justify-content: center;
 }
 
+h1 {
+    color: #305A88;
+}
+
 nav {
-    color: #EDECDA;
-    background-color: #228B22;
+    color: #F1FAFF;
+    background-color: #0288D1;
     padding-left: 16px;
     padding-right: 16px;
 }
 
 body {
-    background-color: #F1F1F1;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -60,14 +63,14 @@ h2 {
 }
 
 .card {
-  background: #fff;
-  border-radius: 2px;
-  position: relative;
+    background-color: white;
+    border-radius: 2px;
+    position: relative;
 }
 
 .card-1 {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
 .game-row {
@@ -86,6 +89,7 @@ h2 {
 
 .constraint {
     align-items: center;
+    color: #305A88;
     justify-content: center;
     font-size: 18px;
 }
@@ -102,15 +106,16 @@ h2 {
 
 
 img {
+    background-color: #F1FAFF;
     max-width: 100%;
 }
 
 .green-1 {
-    background-color: #228B22;
+    background-color: #0288D1;
 }
 
 .green-2 {
-    background-color: #004D00;
+    background-color: #31A7E6;
 }
 
 .black {

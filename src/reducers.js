@@ -62,15 +62,15 @@ function game(state = predefinedGames[INITIAL_GAME_INDEX], action) {
     const column = board.map(row => row[action.column]);
 
     if (!row.some(cell => cell.type === 'empty')) {
-        let numShelters = 0;
+        let numClownfishs = 0;
 
         row.forEach(cell => {
-            if (cell.type === 'shelter') {
-                numShelters++;
+            if (cell.type === 'clownfish') {
+                numClownfishs++;
             }
         });
 
-        rowConstraintCell.fulfilled = rowConstraintCell.value === numShelters;
+        rowConstraintCell.fulfilled = rowConstraintCell.value === numClownfishs;
         rowConstraintCell.unfulfilled = !rowConstraintCell.fulfilled;
     }
     else {
@@ -79,15 +79,15 @@ function game(state = predefinedGames[INITIAL_GAME_INDEX], action) {
 
     // Update column constraints state.
     if (!column.some(cell => cell.type === 'empty')) {
-        let numShelters = 0;
+        let numClownfish = 0;
 
         column.forEach(cell => {
-            if (cell.type === 'shelter') {
-                numShelters++;
+            if (cell.type === 'clownfish') {
+                numClownfish++;
             }
         });
 
-        colConstraintCell.fulfilled = colConstraintCell.value === numShelters;
+        colConstraintCell.fulfilled = colConstraintCell.value === numClownfish;
         colConstraintCell.unfulfilled = !colConstraintCell.fulfilled;
     }
     else {

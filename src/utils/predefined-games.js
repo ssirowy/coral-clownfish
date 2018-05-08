@@ -1,39 +1,39 @@
 const six = {
     title: '6x6 easy',
     board: [
-        [ 'empty', 'shrub', 'empty', 'empty', 'shrub', 'shelter' ],
-        [ 'empty', 'shelter', 'empty', 'shelter', 'shrub', 'shrub' ],
-        [ 'empty', 'empty', 'empty', 'shrub', 'empty', 'shelter' ],
-        [ 'empty', 'shrub', 'empty', 'shelter', 'empty', 'empty' ],
-        [ 'empty', 'shelter', 'empty', 'empty', 'empty', 'empty' ],
-        [ 'empty', 'empty', 'empty', 'shrub', 'shelter', 'empty' ],
+        [ 'empty', 'coral', 'empty', 'empty', 'coral', 'clownfish' ],
+        [ 'empty', 'clownfish', 'empty', 'clownfish', 'coral', 'coral' ],
+        [ 'empty', 'empty', 'empty', 'coral', 'empty', 'clownfish' ],
+        [ 'empty', 'coral', 'empty', 'clownfish', 'empty', 'empty' ],
+        [ 'empty', 'clownfish', 'empty', 'empty', 'empty', 'empty' ],
+        [ 'empty', 'empty', 'empty', 'coral', 'clownfish', 'empty' ],
     ],
 };
 
 const seven = {
     title: '7x7 easy',
     board: [
-        [ 'empty', 'empty', 'shrub', 'shelter', 'empty', 'shelter', 'empty' ],
-        [ 'shelter', 'empty', 'shrub', 'empty', 'empty', 'shrub', 'empty' ],
-        [ 'shrub', 'empty', 'shelter', 'empty', 'empty', 'empty', 'empty' ],
-        [ 'shelter', 'shrub', 'empty', 'empty', 'empty', 'empty', 'empty' ],
-        [ 'empty', 'shrub', 'shrub', 'shelter', 'empty', 'shelter', 'shrub' ],
-        [ 'empty', 'shelter', 'empty', 'empty', 'empty', 'empty', 'empty' ],
-        [ 'empty', 'empty', 'empty', 'empty', 'shelter', 'shrub', 'empty' ],
+        [ 'empty', 'empty', 'coral', 'clownfish', 'empty', 'clownfish', 'empty' ],
+        [ 'clownfish', 'empty', 'coral', 'empty', 'empty', 'coral', 'empty' ],
+        [ 'coral', 'empty', 'clownfish', 'empty', 'empty', 'empty', 'empty' ],
+        [ 'clownfish', 'coral', 'empty', 'empty', 'empty', 'empty', 'empty' ],
+        [ 'empty', 'coral', 'coral', 'clownfish', 'empty', 'clownfish', 'coral' ],
+        [ 'empty', 'clownfish', 'empty', 'empty', 'empty', 'empty', 'empty' ],
+        [ 'empty', 'empty', 'empty', 'empty', 'clownfish', 'coral', 'empty' ],
     ],
 };
 
 const eight = {
     title: '8x8 easy',
     board: [
-        [ 'empty', 'empty', 'shrub', 'shelter', 'shrub', 'shelter', 'shrub', 'shelter' ],
-        [ 'empty', 'shelter', 'empty', 'empty', 'empty', 'empty', 'empty', 'shrub' ],
-        [ 'empty', 'shrub', 'empty', 'empty', 'empty', 'empty', 'empty', 'shelter' ],
-        [ 'empty', 'empty', 'shelter', 'shrub', 'shelter', 'empty', 'empty', 'shrub' ],
-        [ 'shelter', 'empty', 'shrub', 'empty', 'empty', 'empty', 'empty', 'shelter' ],
-        [ 'shrub', 'empty', 'empty', 'shelter', 'empty', 'empty', 'shrub', 'empty' ],
-        [ 'shelter', 'shrub', 'empty', 'shrub', 'empty', 'empty', 'shelter', 'empty' ],
-        [ 'empty', 'shrub', 'shelter', 'empty', 'shelter', 'shrub', 'empty', 'empty' ],
+        [ 'empty', 'empty', 'coral', 'clownfish', 'coral', 'clownfish', 'coral', 'clownfish' ],
+        [ 'empty', 'clownfish', 'empty', 'empty', 'empty', 'empty', 'empty', 'coral' ],
+        [ 'empty', 'coral', 'empty', 'empty', 'empty', 'empty', 'empty', 'clownfish' ],
+        [ 'empty', 'empty', 'clownfish', 'coral', 'clownfish', 'empty', 'empty', 'coral' ],
+        [ 'clownfish', 'empty', 'coral', 'empty', 'empty', 'empty', 'empty', 'clownfish' ],
+        [ 'coral', 'empty', 'empty', 'clownfish', 'empty', 'empty', 'coral', 'empty' ],
+        [ 'clownfish', 'coral', 'empty', 'coral', 'empty', 'empty', 'clownfish', 'empty' ],
+        [ 'empty', 'coral', 'clownfish', 'empty', 'clownfish', 'coral', 'empty', 'empty' ],
     ],
 
 };
@@ -57,7 +57,7 @@ const generateGame = function(config) {
                 let value = 0;
 
                 for (let row = 0; row < boardSize; row++) {
-                    if (board[row][i - 1] === 'shelter') {
+                    if (board[row][i - 1] === 'clownfish') {
                         value++;
                     }
                 }
@@ -75,7 +75,7 @@ const generateGame = function(config) {
                 let value = 0;
 
                 for (let col = 0; col < boardSize; col++) {
-                    if (board[i - 1][col] === 'shelter') {
+                    if (board[i - 1][col] === 'clownfish') {
                         value++;
                     }
                 }
@@ -90,7 +90,7 @@ const generateGame = function(config) {
             const debug = false;
 
             if (!debug) {
-                type = (type === 'shelter') ? 'empty' : type;
+                type = (type === 'clownfish') ? 'empty' : type;
             }
 
             return {
