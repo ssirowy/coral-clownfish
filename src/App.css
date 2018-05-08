@@ -1,13 +1,13 @@
 .App {
     display: grid;
-    height: 100vh;
     grid-template-columns: 300px 1fr;
     grid-template-rows: auto;
+    height: 100vh;
 }
 
 section {
-    background-color: #F1FAFF;
     align-items: center;
+    background-color: #F1FAFF;
     display: flex;
     justify-content: center;
 }
@@ -17,8 +17,8 @@ h1 {
 }
 
 nav {
-    color: #F1FAFF;
     background-color: #0288D1;
+    color: #F1FAFF;
     padding-left: 16px;
     padding-right: 16px;
 }
@@ -32,8 +32,8 @@ h2 {
 }
 
 .menu-label {
-    margin-bottom: 4px;
     font-size: 12px;
+    margin-bottom: 4px;
 }
 
 .strategy-label {
@@ -42,14 +42,14 @@ h2 {
 
 .reset-button {
     background: none;
-    color: inherit;
     border: none;
-    padding: 0;
+    color: inherit;
+    cursor: pointer;
     font: inherit;
     font-size: 12px;
-    cursor: pointer;
-    outline: inherit;
     margin-top: 4px;
+    outline: inherit;
+    padding: 0;
     text-align: right;
 }
 
@@ -58,19 +58,15 @@ h2 {
     color: #004D00;
     display: flex;
     flex-direction: column;
-    width: 80vh;
     height: 80vh;
+    width: 80vh;
 }
 
 .card {
     background-color: white;
     border-radius: 2px;
-    position: relative;
-}
-
-.card-1 {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    position: relative;
 }
 
 .game-row {
@@ -90,8 +86,8 @@ h2 {
 .constraint {
     align-items: center;
     color: #305A88;
-    justify-content: center;
     font-size: 20px;
+    justify-content: center;
 }
 
 .constraint.fulfilled {
@@ -108,6 +104,8 @@ h2 {
 img {
     background-color: #31A7E6;
     max-width: 100%;
+
+    user-select: none;
 }
 
 .water {

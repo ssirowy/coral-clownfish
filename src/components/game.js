@@ -25,7 +25,7 @@ class Game extends Component {
         return (
             <div>
                 <h1>{this.props.game.title} {winner}</h1>
-              <div className="game-container xcard card-1">
+              <div className="game-container card">
                 {
                     this.props.game.board.map((row, i) => this.generateRow(i))
                 }

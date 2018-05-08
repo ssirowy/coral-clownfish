@@ -8,15 +8,6 @@ import clownfish from '../img/clownfish.png';
 
 class Cell extends Component {
 
-    constructor(props) {
-
-        super(props);
-
-        this.state = {
-            grassColor: Math.random() > .7 ? 'green-2' : 'green-1',
-        };
-    }
-
     render() {
 
         const cell = this.props.cell;

@@ -20,7 +20,6 @@ class App extends Component {
         // Subscribe to updates to Redux store and update app state every time state changes.
         store.subscribe(() => {
             this.setState(store.getState());
-            console.log(store.getState());
         });
     }
 

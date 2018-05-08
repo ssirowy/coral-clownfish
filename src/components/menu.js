@@ -36,13 +36,13 @@ class Menu extends Component {
                 clearable={false}
                 options={options}
                 />
-                <button className='reset-button'
-                        onClick={() => store.dispatch(resetGame(currentIndex))}>
-                  Reset
-                </button>
+              <button className='reset-button'
+                      onClick={() => store.dispatch(resetGame(currentIndex))}>
+                Reset
+              </button>
 
               <div className='menu-label strategy-label'>
-                Select a strategy
+                Select a bot
               </div>
             </nav>
         );
