@@ -61,8 +61,7 @@ class Cell extends Component {
             );
         }
         else {
-            const color = (cell.type === 'empty') ? 'black' : this.state.grassColor;
-            const classNames = `game-cell ${color}`;
+            const classNames = `game-cell ${cell.type}`;
 
             return (
                     <div className={classNames} onClick={() => this.props.store.dispatch(clickCell(this.props.row, this.props.col))}></div>

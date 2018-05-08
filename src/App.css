@@ -91,14 +91,14 @@ h2 {
     align-items: center;
     color: #305A88;
     justify-content: center;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .constraint.fulfilled {
     color: #BBBBBB;
     font-weight: bold;
 }
-
+p
 .constraint.unfulfilled {
     color: red;
     font-weight: bold;
@@ -106,18 +106,14 @@ h2 {
 
 
 img {
-    background-color: #F1FAFF;
+    background-color: #31A7E6;
     max-width: 100%;
 }
 
-.green-1 {
-    background-color: #0288D1;
-}
-
-.green-2 {
+.water {
     background-color: #31A7E6;
 }
 
-.black {
+.empty {
     background-color: black;
 }
