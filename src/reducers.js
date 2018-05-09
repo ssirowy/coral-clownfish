@@ -1,7 +1,7 @@
 import { predefinedGames } from './utils/predefined-games';
 import bots from './bots';
 import { interactiveCellTypes } from './utils/constants';
-import { CLICK_CELL, CHANGE_GAME_INDEX, RESET_GAME } from './actions';
+import { CLICK_CELL, CHANGE_GAME_INDEX, RESET_GAME, CHANGE_BOT_INDEX } from './actions';
 import { combineReducers } from 'redux';
 
 // Initial game index to load.

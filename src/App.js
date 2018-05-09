@@ -28,6 +28,7 @@ class App extends Component {
             <div className="App">
               <Menu games={this.state.games}
                     currentGame={this.state.game}
+                    bots={this.state.gameBots}
                     store={store} />
               <section>
                 <Game game={this.state.game} store={store} />
