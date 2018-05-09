@@ -1,4 +1,5 @@
 import { predefinedGames } from './utils/predefined-games';
+import bots from './bots';
 import { interactiveCellTypes } from './utils/constants';
 import { CLICK_CELL, CHANGE_GAME_INDEX, RESET_GAME } from './actions';
 import { combineReducers } from 'redux';
@@ -119,10 +120,36 @@ function gameIndex(state = 0, action) {
     return action.index >= 0 ? action.index : 0;
 }
 
+/**
+   Predefined games reducer.
+   @method games
+   @return {Array}
+*/
 function games(state = predefinedGames) {
     return state;
 }
 
+/**
+   Predefined game bots reducer.
+   @method gameBots
+   @return {Array}
+*/
+function gameBots(state = bots) {
+    return state;
+}
+
+/**
+   Game bot index reduceer.
+   @method gameBotIndex
+   @return {Integer}
+*/
+function gameBotIndex(state = 0, action) {
+    if (action.type !== CHANGE_BOT_INDEX) {
+        return state;
+    }
+
+    return action.index >= 0 ? action.index : 0;
+}
 
 /**
    Main app store for our game.
@@ -133,6 +160,8 @@ const appStore = combineReducers({
     games,
     game,
     gameIndex,
+    gameBots,
+    gameBotIndex,
 });
 
 export { appStore };
