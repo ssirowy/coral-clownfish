@@ -1,7 +1,7 @@
 import { predefinedGames } from './utils/predefined-games';
-import bots from './bots';
+import oracles from './oracles';
 import { interactiveCellTypes } from './utils/constants';
-import { CLICK_CELL, CHANGE_GAME_INDEX, RESET_GAME, CHANGE_BOT, SET_BOT_RUNNING } from './actions';
+import { CLICK_CELL, CHANGE_GAME_INDEX, RESET_GAME, CHANGE_ORACLE, SET_BOT_RUNNING } from './actions';
 import { combineReducers } from 'redux';
 
 /**
@@ -111,25 +111,25 @@ function games(state = predefinedGames) {
 }
 
 /**
-   Predefined game bots reducer.
-   @method gameBots
+   Predefined game oracles reducer.
+   @method gameOracles
    @return {Array}
 */
-function gameBots(state = bots) {
+function gameOracles(state = oracles) {
     return state;
 }
 
 /**
-   Game bot index reduceer.
-   @method gameBotIndex
-   @return {Bot}
+   Game oracle index reduceer.
+   @method gameOracleIndex
+   @return {Oracle}
 */
-function gameBot(state = null, action) {
-    if (action.type !== CHANGE_BOT) {
+function gameOracle(state = null, action) {
+    if (action.type !== CHANGE_ORACLE) {
         return state;
     }
 
-    return action.bot;
+    return action.oracle;
 }
 
 /**
@@ -154,8 +154,8 @@ const appStore = combineReducers({
     games,
     game,
     gameIndex,
-    gameBots,
-    gameBot,
+    gameOracles,
+    gameOracle,
     gameBotRunning,
 });
 

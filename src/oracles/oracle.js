@@ -1,5 +1,3 @@
-import Cell from './cell';
-
 /**
    This defines the basic interface of an oracle. You should override this class and then write
    your own suggestion algorithm.
@@ -33,7 +31,7 @@ export default class Oracle {
        @return {Cell}
     */
     nextCellClickSuggestion(board) {
-        return new Cell(2, 1);
+        throw 'Unimplemented';
     },
 
     /**
