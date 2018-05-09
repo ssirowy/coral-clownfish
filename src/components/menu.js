@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { clickCell } from '../actions';
 
 import '../styles/menu.css';
 
-import { changeIndex, resetGame, changeBot } from '../actions';
+import { changeIndex, resetGame, changeSuggester } from '../actions';
 
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
@@ -11,7 +12,7 @@ class Menu extends Component {
 
     render() {
 
-        const { currentGame, games, store, bots, bot, botRunning } = this.props;
+        const { currentGame, games, store, suggesters, suggester, botRunning } = this.props;
         const currentIndex = games.map(game => game.title).indexOf(currentGame.title);
 
         // Create a series of options to render in select component.
@@ -24,23 +25,23 @@ class Menu extends Component {
 
         const selectedGameOption = gameOptions[currentIndex];
 
-        // Create a series of bot options to render in select component.
-        const botOptions = bots.map((bot, i) => {
+        // Create a series of suggester options to render in select component.
+        const suggesterOptions = suggesters.map((suggester, i) => {
             return {
                 value: i,
-                label: bot.title,
+                label: suggester.getName(),
             };
         });
 
-        let selectedBot = null;
-        if (bot) {
-            selectedBot = botOptions.find(option => option.label === bot.title);
+        let selectedSuggester = null;
+        if (suggester) {
+            selectedSuggester = suggesterOptions.find(option => option.label === suggester.getName());
         }
 
-        const playButtonDisabled = (selectedBot === null);
-        const disabledClass = (playButtonDisabled || botRunning) ? 'disabled' : null
-        const playButtonClassNames = `play-button ${disabledClass}`;
-        const playButtonTitle = botRunning ? 'Running' : 'Run bot';
+        const suggestButtonDisabled = (selectedSuggester === null);
+        const disabledClass = (suggestButtonDisabled || botRunning) ? 'disabled' : null
+        const suggestButtonClassNames = `suggest-button ${disabledClass}`;
+        const suggestButtonTitle = botRunning ? 'Running' : 'Make a suggestion';
 
         return (
             <nav>
@@ -60,20 +61,20 @@ class Menu extends Component {
               </button>
 
               <div className='menu-label bots-label'>
-                Select a bot
+                Select a suggester
               </div>
-              <Select name="bots"
-                      value={selectedBot}
+              <Select name="suggesters"
+                      value={selectedSuggester}
                       clearable={false}
-                      options={botOptions}
-                      onChange={event => store.dispatch(changeBot(bots[event.value]))}
+                      options={suggesterOptions}
+                      onChange={event => store.dispatch(changeSuggester(suggesters[event.value]))}
                       />
 
-                <button className={playButtonClassNames}
-                      disabled={playButtonDisabled}
-                        onClick={() => bot.start(store)}
+                <button className={suggestButtonClassNames}
+                      disabled={suggestButtonDisabled}
+                        onClick={() => store.dispatch(clickCell(suggester.nextSuggestion(currentGame.board)))}
                       >
-                  {playButtonTitle}
+                  {suggestButtonTitle}
               </button>
 
             </nav>

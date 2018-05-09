@@ -12,7 +12,7 @@ class GameRow extends Component {
                   this.props.row.map((cell, i) =>
                                      <Cell key={i}
                                                row={this.props.rowIndex}
-                                               col={i}
+                                               column={i}
                                                cell={cell}
                                                store={this.props.store}/>
                                     )

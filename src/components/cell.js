@@ -22,7 +22,7 @@ class Cell extends Component {
         }
         else if (cell.type === 'clownfish') {
             return (
-                <div className={classNames} onClick={() => this.props.store.dispatch(clickCell(this.props.row, this.props.col))}>
+                <div className={classNames} onClick={() => this.props.store.dispatch(clickCell(this.props))}>
                   <img src={clownfish} />
                 </div>
             );
@@ -47,7 +47,7 @@ class Cell extends Component {
         }
         else {
             return (
-                    <div className={classNames} onClick={() => this.props.store.dispatch(clickCell(this.props.row, this.props.col))}></div>
+                    <div className={classNames} onClick={() => this.props.store.dispatch(clickCell(this.props))}></div>
             );
         }
     }

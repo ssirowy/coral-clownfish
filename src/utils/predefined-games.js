@@ -109,7 +109,7 @@ function _generateGame(config) {
             }
 
             let type = board[i - 1][j - 1];
-            const debug = true;
+            const debug = false;
 
             if (!debug) {
                 type = (type === 'clownfish') ? 'empty' : type;
