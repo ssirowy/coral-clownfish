@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import '../App.css';
+
+import '../styles/menu.css';
 
 import { changeIndex, resetGame } from '../actions';
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import GameRow from './game-row';
-import '../App.css';
+import '../styles/game.css';
 
 class Game extends Component {
 
@@ -25,11 +25,12 @@ class Game extends Component {
         return (
             <div>
                 <h1>{this.props.game.title} {winner}</h1>
-              <div className="game-container card">
-                {
-                    this.props.game.board.map((row, i) => this.generateRow(i))
-                }
-              </div>
+                <div className="game-container">
+                  {
+                      this.props.game.board.map((row, i) => this.generateRow(i))
+                  }
+                </div>
+                <div className="instructions">Click non-coral cells to toggle</div>
             </div>
         );
     }

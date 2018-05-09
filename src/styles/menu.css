@@ -1,0 +1,32 @@
+nav {
+    background-color: #0288D1;
+    color: #F1FAFF;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.menu-label {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.strategy-label {
+    margin-top: 32px;
+}
+
+.reset-button {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    font-size: 12px;
+    margin-top: 4px;
+    outline: inherit;
+    padding: 0;
+    text-align: right;
+}

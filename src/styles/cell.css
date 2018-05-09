@@ -1,0 +1,40 @@
+.cell {
+    cursor: pointer;
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
+    margin: 1px;
+}
+
+.constraint {
+    align-items: center;
+    color: #305A88;
+    font-size: 16px;
+    justify-content: center;
+}
+
+.fulfilled {
+    background-color: green;
+    color: white;
+    padding: 2px 10px;
+}
+
+.unfulfilled {
+    background-color: red;
+    padding: 2px 10px;
+    color: white;
+}
+
+img {
+    background-color: #31A7E6;
+    max-width: 100%;
+    user-select: none;
+}
+
+.water {
+    background-color: #31A7E6;
+}
+
+.empty {
+    background-color: #c2cddd;
+}
