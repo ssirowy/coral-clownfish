@@ -1,11 +1,8 @@
 import { predefinedGames } from './utils/predefined-games';
 import bots from './bots';
 import { interactiveCellTypes } from './utils/constants';
-import { CLICK_CELL, CHANGE_GAME_INDEX, RESET_GAME, CHANGE_BOT, BOT_RUNNING } from './actions';
+import { CLICK_CELL, CHANGE_GAME_INDEX, RESET_GAME, CHANGE_BOT, SET_BOT_RUNNING } from './actions';
 import { combineReducers } from 'redux';
-
-// Initial game index to load.
-const INITIAL_GAME_INDEX = 0;
 
 /**
    Helper function that returns the next cell type when a cell with a type has been clicked.
@@ -26,7 +23,7 @@ function _nextCellType(type) {
 /**
    Game state reducer.
 */
-function game(state = predefinedGames[INITIAL_GAME_INDEX], action) {
+function game(state = predefinedGames[0], action) {
 
     // Game index and reset.  Return a predefined game.
     if (action.type === CHANGE_GAME_INDEX || action.type === RESET_GAME) {
@@ -47,7 +44,7 @@ function game(state = predefinedGames[INITIAL_GAME_INDEX], action) {
         return state;
     }
 
-    // Create new immutable board.
+    // Create new board.
     const board = state.board.map(row => {
         return row.map(cell => Object.assign({}, cell));
     });
@@ -64,15 +61,9 @@ function game(state = predefinedGames[INITIAL_GAME_INDEX], action) {
     const column = board.map(row => row[action.column]);
 
     if (!row.some(cell => cell.type === 'empty')) {
-        let numClownfishs = 0;
+        const numClownfish = row.filter(cell => cell.type === 'clownfish').length;
 
-        row.forEach(cell => {
-            if (cell.type === 'clownfish') {
-                numClownfishs++;
-            }
-        });
-
-        rowConstraintCell.fulfilled = rowConstraintCell.value === numClownfishs;
+        rowConstraintCell.fulfilled = rowConstraintCell.value === numClownfish;
         rowConstraintCell.unfulfilled = !rowConstraintCell.fulfilled;
     }
     else {
@@ -81,13 +72,7 @@ function game(state = predefinedGames[INITIAL_GAME_INDEX], action) {
 
     // Update column constraints state.
     if (!column.some(cell => cell.type === 'empty')) {
-        let numClownfish = 0;
-
-        column.forEach(cell => {
-            if (cell.type === 'clownfish') {
-                numClownfish++;
-            }
-        });
+        const numClownfish = row.filter(cell => cell.type === 'clownfish').length
 
         colConstraintCell.fulfilled = colConstraintCell.value === numClownfish;
         colConstraintCell.unfulfilled = !colConstraintCell.fulfilled;
@@ -158,7 +143,7 @@ function gameBot(state = null, action) {
    @return {Boolean}
 */
 function gameBotRunning(state = false, action) {
-    if (action.type !== BOT_RUNNING) {
+    if (action.type !== SET_BOT_RUNNING) {
         return state;
     }
 

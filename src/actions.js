@@ -3,7 +3,7 @@ export const CLICK_CELL = 'CLICK_CELL';
 export const CHANGE_GAME_INDEX = 'GAME_INDEX';
 export const RESET_GAME = 'RESET_GAME';
 export const CHANGE_BOT = 'CHANGE_BOT';
-export const BOT_RUNNING = 'BOT_RUNNING';
+export const SET_BOT_RUNNING = 'SET_BOT_RUNNING';
 
 // Simple action creators for game.
 export function clickCell(row, column) {
@@ -35,9 +35,9 @@ export function changeBot(bot) {
     };
 }
 
-export function botRunning(running) {
+export function setBotRunning(running) {
     return {
-        type: BOT_RUNNING,
+        type: SET_BOT_RUNNING,
         running,
     };
 }

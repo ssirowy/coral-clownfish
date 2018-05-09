@@ -1,4 +1,4 @@
-import { botRunning, clickCell } from '../actions';
+import { setBotRunning, clickCell } from '../actions';
 /**
    This defines the basic interface of a bot. You should inherit from this and...
 */
@@ -19,12 +19,12 @@ export default class BasicBot {
             this.executeStep(store.getState().game.board);
         });
 
-        store.dispatch(botRunning(true));
+        store.dispatch(setBotRunning(true));
     }
 
     stop() {
         this.unsubscribe();
-        this.store.dispatch(botRunning(false));
+        this.store.dispatch(setBotRunning(false));
 
         this.i = 1;
         this.unsubscribe = this.store = null;
@@ -45,7 +45,7 @@ export default class BasicBot {
     _sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-x
+
     async clickCell(row, column) {
         if (this.sleepMS) {
             await this._sleep(this.sleepMS);

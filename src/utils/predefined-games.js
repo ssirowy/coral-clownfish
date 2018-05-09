@@ -1,5 +1,5 @@
 const sixEasy = {
-    title: '6x6 easy',
+    title: '6x6 Problem 1',
     board: [
         [ 'empty', 'coral', 'empty', 'empty', 'coral', 'clownfish' ],
         [ 'empty', 'clownfish', 'empty', 'clownfish', 'coral', 'coral' ],
@@ -11,7 +11,7 @@ const sixEasy = {
 };
 
 const sevenEasy = {
-    title: '7x7 easy',
+    title: '7x7 Problem 1',
     board: [
         [ 'empty', 'empty', 'coral', 'clownfish', 'empty', 'clownfish', 'empty' ],
         [ 'clownfish', 'empty', 'coral', 'empty', 'empty', 'coral', 'empty' ],
@@ -24,7 +24,7 @@ const sevenEasy = {
 };
 
 const eightEasy = {
-    title: '8x8 easy',
+    title: '8x8 Problem 1',
     board: [
         [ 'empty', 'empty', 'coral', 'clownfish', 'coral', 'clownfish', 'coral', 'clownfish' ],
         [ 'empty', 'clownfish', 'empty', 'empty', 'empty', 'empty', 'empty', 'coral' ],
@@ -39,7 +39,7 @@ const eightEasy = {
 };
 
 const nineEasy = {
-    title: '9x9 easy',
+    title: '9x9 Problem 1',
     board: [
         [ 'clownfish', 'empty', 'empty', 'empty', 'clownfish', 'coral', 'empty', 'empty', 'empty' ],
         [ 'coral', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'clownfish', 'coral' ],
