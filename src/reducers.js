@@ -1,7 +1,7 @@
 import { predefinedGames } from './utils/predefined-games';
 import bots from './bots';
 import { interactiveCellTypes } from './utils/constants';
-import { CLICK_CELL, CHANGE_GAME_INDEX, RESET_GAME, CHANGE_BOT_INDEX } from './actions';
+import { CLICK_CELL, CHANGE_GAME_INDEX, RESET_GAME, CHANGE_BOT } from './actions';
 import { combineReducers } from 'redux';
 
 // Initial game index to load.
@@ -143,12 +143,12 @@ function gameBots(state = bots) {
    @method gameBotIndex
    @return {Integer}
 */
-function gameBotIndex(state = 0, action) {
-    if (action.type !== CHANGE_BOT_INDEX) {
+function gameBot(state = null, action) {
+    if (action.type !== CHANGE_BOT) {
         return state;
     }
 
-    return action.index >= 0 ? action.index : 0;
+    return action.bot;
 }
 
 /**
@@ -161,7 +161,7 @@ const appStore = combineReducers({
     game,
     gameIndex,
     gameBots,
-    gameBotIndex,
+    gameBot,
 });
 
 export { appStore };

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import '../styles/menu.css';
 
-import { changeIndex, resetGame } from '../actions';
+import { changeIndex, resetGame, changeBot } from '../actions';
 
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
@@ -11,7 +11,7 @@ class Menu extends Component {
 
     render() {
 
-        const { currentGame, games, store, bots } = this.props;
+        const { currentGame, games, store, bots, bot } = this.props;
         const currentIndex = games.map(game => game.title).indexOf(currentGame.title);
 
         // Create a series of options to render in select component.
@@ -32,7 +32,12 @@ class Menu extends Component {
             };
         });
 
-        const disabled=true;
+        let selectedBot = null;
+        if (bot) {
+            selectedBot = botOptions.find(option => option.label === bot.title);
+        }
+
+        const disabled=false;
 
         return (
             <nav>
@@ -40,13 +45,12 @@ class Menu extends Component {
               <div className='menu-label'>
                 Select preconfigured game
               </div>
-              <Select
-                name="games"
-                value={selectedGameOption}
-                onChange={event => store.dispatch(changeIndex(event.value))}
-                clearable={false}
-                options={gameOptions}
-                />
+              <Select name="games"
+                      value={selectedGameOption}
+                      clearable={false}
+                      options={gameOptions}
+                      onChange={event => store.dispatch(changeIndex(event.value))}
+              />
               <button className='reset-button'
                       onClick={() => store.dispatch(resetGame(currentIndex))}>
                 Reset
@@ -55,17 +59,19 @@ class Menu extends Component {
               <div className='menu-label bots-label'>
                 Select a bot
               </div>
-              <Select
-                name="bots"
-                clearable={false}
-                options={botOptions}
-                />
+              <Select name="bots"
+                      value={selectedBot}
+                      clearable={false}
+                      options={botOptions}
+                      onChange={event => store.dispatch(changeBot(bots[event.value]))}
+                      />
 
-              <button className='play-button' disabled={disabled}
+              <button className='play-button'
+                      disabled={disabled}
+                      onClick={() => console.log("Clicked!")}
                       >
-              Run bot
+                Run bot
               </button>
-
 
             </nav>
         );

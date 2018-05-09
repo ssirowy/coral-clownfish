@@ -2,7 +2,7 @@
 export const CLICK_CELL = 'CLICK_CELL';
 export const CHANGE_GAME_INDEX = 'GAME_INDEX';
 export const RESET_GAME = 'RESET_GAME';
-export const CHANGE_BOT_INDEX = 'CHANGE_BOT_INDEX';
+export const CHANGE_BOT = 'CHANGE_BOT';
 
 // Simple action creators for game.
 export function clickCell(row, column) {
@@ -27,10 +27,10 @@ export function resetGame(index) {
     };
 }
 
-export function changeBotIndex(index) {
+export function changeBot(bot) {
     return {
-        type: CHANGE_BOT_INDEX,
-        index,
+        type: CHANGE_BOT,
+        bot
     };
 }
 
