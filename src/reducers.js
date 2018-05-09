@@ -62,7 +62,6 @@ function game(state = predefinedGames[0], action) {
 
     if (!row.some(cell => cell.type === 'empty')) {
         const numClownfish = row.filter(cell => cell.type === 'clownfish').length;
-        debugger;
 
         rowConstraintCell.fulfilled = rowConstraintCell.value === numClownfish;
         rowConstraintCell.unfulfilled = !rowConstraintCell.fulfilled;

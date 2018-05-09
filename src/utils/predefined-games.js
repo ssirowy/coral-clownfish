@@ -84,6 +84,7 @@ function _generateGame(config) {
                 return {
                     type: 'constraint',
                     value,
+                    constraintType: 'column',
                 };
             });
         }
@@ -103,6 +104,7 @@ function _generateGame(config) {
                 return {
                     type: 'constraint',
                     value,
+                    constraintType: 'row',
                 };
             }
 

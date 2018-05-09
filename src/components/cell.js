@@ -29,10 +29,11 @@ class Cell extends Component {
         }
         else if (cell.type === 'constraint') {
 
-            const fulfilledClass = cell.fulfilled ? 'fulfilled' : cell.unfulfilled ? 'unfulfilled' : null;
+            const fulfilledClass = cell.fulfilled ? 'fulfilled' : cell.unfulfilled ? 'unfulfilled' : '';
+            const constraintClass = `${cell.constraintType} ${classNames}`;
 
             return (
-                <div className={classNames}>
+                <div className={constraintClass}>
                   <div className={fulfilledClass}>
                     {cell.value}
                   </div>
