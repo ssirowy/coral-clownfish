@@ -1,4 +1,4 @@
-const six = {
+const sixEasy = {
     title: '6x6 easy',
     board: [
         [ 'empty', 'coral', 'empty', 'empty', 'coral', 'clownfish' ],
@@ -10,7 +10,7 @@ const six = {
     ],
 };
 
-const seven = {
+const sevenEasy = {
     title: '7x7 easy',
     board: [
         [ 'empty', 'empty', 'coral', 'clownfish', 'empty', 'clownfish', 'empty' ],
@@ -23,7 +23,7 @@ const seven = {
     ],
 };
 
-const eight = {
+const eightEasy = {
     title: '8x8 easy',
     board: [
         [ 'empty', 'empty', 'coral', 'clownfish', 'coral', 'clownfish', 'coral', 'clownfish' ],
@@ -38,7 +38,27 @@ const eight = {
 
 };
 
-const generateGame = function(config) {
+const nineEasy = {
+    title: '9x9 easy',
+    board: [
+        [ 'clownfish', 'empty', 'empty', 'empty', 'clownfish', 'coral', 'empty', 'empty', 'empty' ],
+        [ 'coral', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'clownfish', 'coral' ],
+        [ 'empty', 'clownfish', 'coral', 'empty', 'empty', 'clownfish', 'empty', 'empty', 'empty' ],
+        [ 'coral', 'empty', 'empty', 'clownfish', 'coral', 'coral', 'empty', 'empty', 'empty' ],
+        [ 'clownfish', 'empty', 'empty', 'empty', 'empty', 'empty', 'clownfish', 'coral', 'clownfish' ],
+        [ 'empty', 'coral', 'empty', 'coral', 'clownfish', 'empty', 'empty', 'empty', 'coral' ],
+        [ 'empty', 'clownfish', 'empty', 'empty', 'empty', 'coral', 'empty', 'clownfish', 'coral' ],
+        [ 'empty', 'empty', 'empty', 'empty', 'empty', 'clownfish', 'empty', 'empty', 'coral' ],
+        [ 'empty', 'clownfish', 'coral', 'clownfish', 'coral', 'empty', 'empty', 'empty', 'clownfish' ],
+    ],
+};
+
+/**
+   Utility function ot generate a board from a game config aboe.
+   @method _generateGame
+   @return {Object}
+*/
+function _generateGame(config) {
 
     const board = config.board;
     const boardSize = board[0].length;
@@ -106,6 +126,8 @@ const generateGame = function(config) {
     };
 };
 
-const predefinedGames = [ six, seven, eight ].map(game => generateGame(game));
+
+
+const predefinedGames = [ nineEasy, sixEasy, sevenEasy, eightEasy ].map(game => _generateGame(game));
 
 export { predefinedGames };
