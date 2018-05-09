@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GameRow from './game-row';
+import isWinner from '../utils/is-winner';
 import '../styles/game.css';
 
 class Game extends Component {
@@ -17,14 +18,9 @@ class Game extends Component {
     }
 
     render() {
-
-        let winner = null;
-        if (this.props.game.winner) {
-            winner = '- Winner!';
-        }
         return (
             <div>
-                <h1>{this.props.game.title} {winner}</h1>
+              <h1>{this.props.game.title} {isWinner(this.props.game.board) && '- Winner'}</h1>
                 <div className="game-container">
                   {
                       this.props.game.board.map((row, i) => this.generateRow(i))

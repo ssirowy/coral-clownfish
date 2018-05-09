@@ -62,6 +62,7 @@ function game(state = predefinedGames[0], action) {
 
     if (!row.some(cell => cell.type === 'empty')) {
         const numClownfish = row.filter(cell => cell.type === 'clownfish').length;
+        debugger;
 
         rowConstraintCell.fulfilled = rowConstraintCell.value === numClownfish;
         rowConstraintCell.unfulfilled = !rowConstraintCell.fulfilled;
@@ -72,7 +73,7 @@ function game(state = predefinedGames[0], action) {
 
     // Update column constraints state.
     if (!column.some(cell => cell.type === 'empty')) {
-        const numClownfish = row.filter(cell => cell.type === 'clownfish').length
+        const numClownfish = column.filter(cell => cell.type === 'clownfish').length;
 
         colConstraintCell.fulfilled = colConstraintCell.value === numClownfish;
         colConstraintCell.unfulfilled = !colConstraintCell.fulfilled;
@@ -81,15 +82,10 @@ function game(state = predefinedGames[0], action) {
         colConstraintCell.fulfilled = colConstraintCell.unfulfilled = false;
     }
 
-    // Pull all row and column constraints. We'll use to determine if board is showing a winner.
-    const cols = board[0];
-    const rows = board.map(row => row[0]);
-
     // Return a new version of the game state.
     return {
         title: state.title,
         board,
-        winner: rows.every(cell => cell.fulfilled) && cols.every(cell => cell.fulfilled),
     };
 }
 
