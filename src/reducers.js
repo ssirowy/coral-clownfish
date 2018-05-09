@@ -1,7 +1,7 @@
 import { predefinedGames } from './utils/predefined-games';
 import bots from './bots';
 import { interactiveCellTypes } from './utils/constants';
-import { CLICK_CELL, CHANGE_GAME_INDEX, RESET_GAME, CHANGE_BOT } from './actions';
+import { CLICK_CELL, CHANGE_GAME_INDEX, RESET_GAME, CHANGE_BOT, BOT_RUNNING } from './actions';
 import { combineReducers } from 'redux';
 
 // Initial game index to load.
@@ -42,7 +42,8 @@ function game(state = predefinedGames[INITIAL_GAME_INDEX], action) {
     if (action.row < 1 ||
         action.row >= state.board.length ||
         action.column < 1 ||
-        action.column >= state.board[0].length) {
+        action.column >= state.board[0].length ||
+        state.board[action.row][action.column].type === 'coral') {
         return state;
     }
 
@@ -141,7 +142,7 @@ function gameBots(state = bots) {
 /**
    Game bot index reduceer.
    @method gameBotIndex
-   @return {Integer}
+   @return {Bot}
 */
 function gameBot(state = null, action) {
     if (action.type !== CHANGE_BOT) {
@@ -149,6 +150,19 @@ function gameBot(state = null, action) {
     }
 
     return action.bot;
+}
+
+/**
+   Game bot running reducer.
+   @method gameBotRunning
+   @return {Boolean}
+*/
+function gameBotRunning(state = false, action) {
+    if (action.type !== BOT_RUNNING) {
+        return state;
+    }
+
+    return action.running;
 }
 
 /**
@@ -162,6 +176,7 @@ const appStore = combineReducers({
     gameIndex,
     gameBots,
     gameBot,
+    gameBotRunning,
 });
 
 export { appStore };

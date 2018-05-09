@@ -14,13 +14,13 @@
 }
 
 .fulfilled {
-    background-color: green;
+    background-color: #0A963E;
     color: white;
     padding: 2px 10px;
 }
 
 .unfulfilled {
-    background-color: red;
+    background-color: #E24E56;
     padding: 2px 10px;
     color: white;
 }

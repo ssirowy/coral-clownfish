@@ -30,6 +30,7 @@ class App extends Component {
                     currentGame={this.state.game}
                     bots={this.state.gameBots}
                     bot={this.state.gameBot}
+                    botRunning={this.state.gameBotRunning}
                     store={store} />
               <section>
                 <Game game={this.state.game} store={store} />

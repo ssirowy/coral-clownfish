@@ -128,6 +128,6 @@ function _generateGame(config) {
 
 
 
-const predefinedGames = [ nineEasy, sixEasy, sevenEasy, eightEasy ].map(game => _generateGame(game));
+const predefinedGames = [ sixEasy, sevenEasy, eightEasy, nineEasy ].map(game => _generateGame(game));
 
 export { predefinedGames };

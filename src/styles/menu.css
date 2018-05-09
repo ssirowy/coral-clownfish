@@ -46,3 +46,8 @@ h2 {
     padding: 8px 16px;
     width: 100%;
 }
+
+.play-button.disabled {
+    background-color: #c2cddd;
+    color: gray;
+}

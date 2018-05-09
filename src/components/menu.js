@@ -11,7 +11,7 @@ class Menu extends Component {
 
     render() {
 
-        const { currentGame, games, store, bots, bot } = this.props;
+        const { currentGame, games, store, bots, bot, botRunning } = this.props;
         const currentIndex = games.map(game => game.title).indexOf(currentGame.title);
 
         // Create a series of options to render in select component.
@@ -37,7 +37,10 @@ class Menu extends Component {
             selectedBot = botOptions.find(option => option.label === bot.title);
         }
 
-        const disabled=false;
+        const playButtonDisabled = (selectedBot === null);
+        const disabledClass = (playButtonDisabled || botRunning) ? 'disabled' : null
+        const playButtonClassNames = `play-button ${disabledClass}`;
+        const playButtonTitle = botRunning ? 'Running' : 'Run bot';
 
         return (
             <nav>
@@ -66,11 +69,11 @@ class Menu extends Component {
                       onChange={event => store.dispatch(changeBot(bots[event.value]))}
                       />
 
-              <button className='play-button'
-                      disabled={disabled}
-                      onClick={() => console.log("Clicked!")}
+                <button className={playButtonClassNames}
+                      disabled={playButtonDisabled}
+                        onClick={() => bot.start(store)}
                       >
-                Run bot
+                  {playButtonTitle}
               </button>
 
             </nav>
