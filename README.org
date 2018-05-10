@@ -1,0 +1,68 @@
+#+Title: Programming competition 5/11/2018
+#+Author: Scott Sirowy
+#+Email: ssirowy@gmail.com
+
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: reveal_width:1200 reveal_height:800
+#+OPTIONS: toc:0
+#+REVEAL_HLEVEL: 2
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Programming competition">
+
+* Coral and clownfish
+Coral and clownfish is a clone of a popular game found on both the Apple app store,
+and Android play store called Tents and Trees.
+
+[[file:images/app.png][Picture of app]]
+
+** Goal of game
+The goal of Coral and Clownfish is to determine where the clownfish should be placed. A board will
+begin in a state where all of the coral are shown.
+
+[[file:images/starting-screen.png][Starting screen for a game]]
+
+** Rules/Constraints
+*** Each piece of coral has one clownfish connected to it.
+*** Each clownfish is connected to a coral either horizontally or vertically.
+*** No clownfish are adjacent to each other, either horizontally, vertically, or diagnally.
+Fish need their space.
+*** Row/column constraints.
+The number of clownfish in each row and column is dictated by a constraint presented to left of rows and on the top of columns.
+This should help you figure out where out where clownfish need to be placed.
+
+* Programming competition
+The original Tents and Trees provides a button to provide a suggestion when you get stuck.
+**  What you will write
+*** The goal of this competition is to write a suggester to provide a suggestion for what move to make next.
+*** Completing the game
+Combined with a bot that can run N moves automatically, your suggester should be able to complete a series of predefined puzzles.
+
+* Setup
+This game is built using [[https://reactjs.org/][React]] and a couple of extra small libraries.  The game also uses [[https://redux.js.org/][Redux]] to maintain state.  You won't really
+need to know how most of the app is working in order to write a suggester.  You can just write basic Javascript to complete the
+competition part, but feel free to poke around the code and figure out what this game is doing. This is my first React app,
+so not everything may be up to code (pun intended),  but I tried to employ the basic patterns as defined in the docs.
+
+** Prerequisites
+1. [[http://git-scm.com/][Git]]
+2. [[http://nodejs.org/][Node and NPM]]
+
+Thats it!
+
+** Installation
+
+1. Clone this repository.
+#+BEGIN_SRC bash
+git clone git@github.com:ssirowy/coral-clownfish.git
+#+END_SRC
+
+2. Download all dependencies.
+#+BEGIN_SRC bash
+cd coral-clownfish
+npm install
+#+END_SRC
+
+3. Run the game
+#+BEGIN_SRC bash
+npm start
+#+END_SRC
