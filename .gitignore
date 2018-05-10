@@ -1,7 +1,10 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
-ll#npm lockfile
+#npm lockfile
 package-lock.json
+
+# org-reveal generated filed
+README.html
 
 # dependencies
 /node_modules
