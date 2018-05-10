@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Programming competition 5/11/2018</title>
+<meta name="author" content="(Scott Sirowy)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.css"/>
+
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'http://cdn.jsdelivr.net/reveal.js/3.0.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="Programming competition">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Programming competition 5/11/2018</h1><h2 class="author">Scott Sirowy</h2><p class="date">Created: 2018-05-10 Thu 11:18</p>
+</section>
+
+<section>
+<section id="slide-org7318f1b">
+<h2 id="org7318f1b">Coral and clownfish</h2>
+<p>
+Coral and clownfish is a clone of a popular game found on both the Apple app store,
+and Android play store called Tents and Trees.
+</p>
+
+<p align="center"><img src="images/app.png" /></p>
+
+</section>
+</section>
+<section>
+<section id="slide-orge8465b6">
+<h3 id="orge8465b6">Goal of game</h3>
+<p>
+The goal of Coral and Clownfish is to determine where the clownfish should be placed. A board will
+begin in a state where all of the coral are shown.
+</p>
+
+<p align="center"><img src="images/starting-screen.png" /></p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgeab6329">
+<h3 id="orgeab6329">Rules/Constraints</h3>
+<div class="outline-text-3" id="text-orgeab6329">
+</div>
+</section>
+<section id="slide-org5abaf2e">
+<h4 id="org5abaf2e">1) Each piece of coral has one clownfish connected to it.</h4>
+<p align="center"><img src="images/rule1-yes.png" /></p>
+</section>
+<section id="slide-orgfb35ff2">
+<h4 id="orgfb35ff2">Do not leave a straggling coral behind</h4>
+<p align="center"><img src="images/rule1-no.png" /></p>
+</section>
+<section id="slide-org0c97075">
+<h4 id="org0c97075">2) Each clownfish is connected to a coral either horizontally or vertically.</h4>
+<p align="center"><img src="images/rule2-yes.png" /></p>
+</section>
+<section id="slide-org5479a61">
+<h4 id="org5479a61">Fish aren't connected to coral diagnally</h4>
+<p align="center"><img src="images/rule2-no.png" /></p>
+
+</section>
+<section id="slide-orgcc2b01d">
+<h4 id="orgcc2b01d">No clownfish are adjacent to each other, either horizontally, vertically, or diagnally.</h4>
+<p>
+Fish need their space.
+</p>
+</section>
+<section id="slide-orgc14e1cf">
+<h4 id="orgc14e1cf">Row/column constraints.</h4>
+<p>
+The number of clownfish in each row and column is dictated by a constraint presented to left of rows and on the top of columns.
+This should help you figure out where out where clownfish need to be placed.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org5360cfb">
+<h2 id="org5360cfb">Programming competition</h2>
+<p>
+The original Tents and Trees provides a button to provide a suggestion when you get stuck.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgc01f75e">
+<h3 id="orgc01f75e">What you will write</h3>
+<div class="outline-text-3" id="text-orgc01f75e">
+</div>
+</section>
+<section id="slide-org4377c78">
+<h4 id="org4377c78">The goal of this competition is to write a suggester to provide a suggestion for what move to make next.</h4>
+</section>
+<section id="slide-org6345064">
+<h4 id="org6345064">Completing the game</h4>
+<p>
+Combined with a bot that can run N moves automatically, your suggester should be able to complete a series of predefined puzzles.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org6fd41ea">
+<h2 id="org6fd41ea">Setup</h2>
+<p>
+This game is built using <a href="https://reactjs.org/">React</a> and a couple of extra small libraries.  The game also uses <a href="https://redux.js.org/">Redux</a> to maintain state.  You won't really
+need to know how most of the app is working in order to write a suggester.  You can just write basic Javascript to complete the
+competition part, but feel free to poke around the code and figure out what this game is doing. This is my first React app,
+so not everything may be up to code (pun intended),  but I tried to employ the basic patterns as defined in the docs.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org3635b4e">
+<h3 id="org3635b4e">Prerequisites</h3>
+<ol>
+<li><a href="http://git-scm.com/">Git</a></li>
+<li><a href="http://nodejs.org/">Node and NPM</a></li>
+
+</ol>
+
+<p>
+Thats it!
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org7d6a3f5">
+<h3 id="org7d6a3f5">Installation</h3>
+<ol>
+<li>Clone this repository.</li>
+
+</ol>
+<div class="org-src-container">
+
+<pre  class="src src-bash">git clone git@github.com:ssirowy/coral-clownfish.git
+</pre>
+</div>
+
+<ol>
+<li>Download all dependencies.</li>
+
+</ol>
+<div class="org-src-container">
+
+<pre  class="src src-bash"><span style="color: #8959a8;">cd</span> coral-clownfish
+npm install
+</pre>
+</div>
+
+<ol>
+<li>Run the game</li>
+
+</ol>
+<div class="org-src-container">
+
+<pre  class="src src-bash">npm start
+</pre>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/head.min.js"></script>
+<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: true,
+keyboard: true,
+overview: true,
+width: 1200,
+height: 800,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
