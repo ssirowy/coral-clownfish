@@ -1,4 +1,10 @@
-function fishHaveSpace(board)  {
+/**
+   Utility methode to determine whether or not all the fish have space.
+   @method _fishHaveSpace
+   @param {Board} Game board.
+   @return {Boolean}
+*/
+function _fishHaveSpace(board)  {
     // Make sure an indidivual fish defined at rowIndex, columnIndex has space.
     // No fish can be around in its immediate vicinity.
     const hasSpace = function(rowIndex, columnIndex) {
@@ -49,26 +55,56 @@ function fishHaveSpace(board)  {
 }
 
 /**
+   Utility method to determine if the whole board has been filled in. Basically no more empty cells
+   @method boardCompleted
+   @param {Board} Game board.
+   @return {Boolean}
+*/
+function _boardCompleted(board) {
+    return !board.some(row => row.some(cell => cell.type === 'empty'));
+}
+
+function _rowColConstraintsFulfilled(board) {
+    // Pull all row and column constraints. We'll use to determine if board is showing a winner.
+    const cols = board[0];
+    const rows = board.map(row => row[0]);
+
+    return rows.every(cell => cell.fulfilled) && cols.every(cell => cell.fulfilled);
+}
+
+/**
    Returns true if board is in a winning state. False otherwise.
    @method isWinner
    @param {Object} board The game board.
    @return {Boolean}
 */
 export function isWinner(board) {
-    // Pull all row and column constraints. We'll use to determine if board is showing a winner.
-    const cols = board[0];
-    const rows = board.map(row => row[0]);
-
-    // Make sure row/col constraints are fulfilled.
-    const constraintsFulfilled = rows.every(cell => cell.fulfilled) && cols.every(cell => cell.fulfilled);
-
-    return constraintsFulfilled && fishHaveSpace(board);
+    return _rowColConstraintsFulfilled(board) && _fishHaveSpace(board);
 }
 
 export function isLoser(board) {
-    return {
-        value: true,
-        reason: 'Something or another',
+
+    let value = false;
+    let reason = null;
+
+    if (!_boardCompleted(board)) {
+        return {
+            value,
+        };
     }
-    
+
+
+    if (!_rowColConstraintsFulfilled(board)) {
+        value = true;
+        reason = 'Row and/or column constraints not fulfilled';
+    }
+    else if (!_fishHaveSpace(board)) {
+        value = true;
+        reason = 'Clownfish need room to swim, they can’t be adjacent to each other';
+    }
+
+    return {
+        value,
+        reason,
+    };
 }
