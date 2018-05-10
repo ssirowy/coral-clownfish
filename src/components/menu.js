@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { clickCell } from '../actions';
 
 import '../styles/menu.css';
+import coral from '../img/coral.png';
+import clownfish from '../img/clownfish.png';
 
 import { changeIndex, resetGame, changeSuggester } from '../actions';
 
@@ -45,9 +47,11 @@ class Menu extends Component {
 
         return (
             <nav>
-              <h2>Coral and clownfish</h2>
+              <h2>
+                <img src={coral} /> <span>Coral and</span>  <span>clownfish</span> <img src={clownfish} />
+              </h2>
               <div className='menu-label'>
-                Select preconfigured game
+                Select a game
               </div>
               <Select name="games"
                       value={selectedGameOption}
@@ -60,7 +64,9 @@ class Menu extends Component {
                 Reset
               </button>
 
-              <div className='menu-label bots-label'>
+              <h3>Suggestions welcome</h3>
+
+              <div className='menu-label'>
                 Select a suggester
               </div>
               <Select name="suggesters"
@@ -68,7 +74,25 @@ class Menu extends Component {
                       clearable={false}
                       options={suggesterOptions}
                       onChange={event => store.dispatch(changeSuggester(suggesters[event.value]))}
-                      />
+
+               />
+              <div className='menu-label'>
+                How many suggestions?
+              </div>
+
+              <input type='number' min="1" className='number-suggestions' />
+
+              <div className='menu-label'>
+                Time between each suggestion?
+              </div>
+
+              <Select name="suggesters"
+                      value={selectedSuggester}
+                      clearable={false}
+                      options={suggesterOptions}
+                      onChange={event => store.dispatch(changeSuggester(suggesters[event.value]))}
+
+               />
 
                 <button className={suggestButtonClassNames}
                       disabled={suggestButtonDisabled}

@@ -6,16 +6,31 @@ nav {
 }
 
 h2 {
-    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav img {
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+}
+
+h3 {
+    margin-top: 32px;
 }
 
 .menu-label {
     font-size: 16px;
     margin-bottom: 8px;
+    margin-top: 16px;
 }
 
-.bots-label {
-    margin-top: 32px;
+.number-suggestions {
+    height: 32px;
+    width: 95%;
+    font-size: 16px;
 }
 
 .reset-button {
