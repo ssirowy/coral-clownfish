@@ -1,6 +1,7 @@
 #+Title: Programming competition 5/11/2018
 
 #+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_title_slide:"<h1>%t</h1>"
 #+OPTIONS: reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
 #+OPTIONS: reveal_width:1200 reveal_height:800
 #+OPTIONS: toc:0
@@ -45,8 +46,11 @@ Each row and column has a specfic number of fish, defined by constraints.
 #+html: <p align="center"><img src="images/rule5-no.png" /></p>
 
 * Programming competition
-The original Tents and Trees provides a button to provide a suggestion when you get stuck. The goal of this competition is to
-write a suggester to provide a suggestion for what move to make next.
+The original game provides a button to provide a suggestion when stuck.
+#+html: <p align="center"><img src="images/tents-suggester.jpg" /></p>
+
+** Write your own
+The goal of this competition is to write a suggester to provide a suggestion for what cell to click next.
 *** Completing the game
 Combined with a bot that can run N moves automatically, your suggester should be able to complete a series of predefined puzzles.
 
