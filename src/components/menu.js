@@ -22,7 +22,7 @@ class Menu extends Component {
     }
 
     /**
-       Method acts as a simple bot for running suggester as many times as user defined.
+       Method acts as a simple bot for running suggester as many times as user defined and with proper delay.
        @method delegateToSuggester
        @param {Suggester} A suggester object.
        @param {Integer} numSuggestions Number of times to ask for suggestions
@@ -31,7 +31,7 @@ class Menu extends Component {
     */
     async delegateToSuggester(store, suggester, numSuggestions, game, delay) {
         for (let i = 0; i < numSuggestions; i++) {
-            store.dispatch(clickCell(suggester.nextSuggestion(game.board)));
+            store.dispatch(clickCell(suggester.nextSuggestion(game)));
 
             if (delay && numSuggestions > 1) {
                 this.setState({

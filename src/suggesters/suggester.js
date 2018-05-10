@@ -24,13 +24,22 @@ export default class Suggester {
     }
 
     /**
-       This is the meat of the suggester. Given a board state, suggest the next cell to click
-       on the board.
+       This is the meat of the suggester. Given a game state, suggest the next cell to click
+       on the board. Note you should NOT be updating the input value in any way, and this will change
+       every time this method gets called.  Given the input, you should be providing a cell value to
+       "click" on.
+
+       While this is encapsulated in a class (meaning you can store any amount of state), bonus
+       points if you can implement a suggester that is a pure function, i.e it only needs the input
+       value to provide an output.
+
+       You can return null and expect a no-op in game play.
+
        @method nextCellClicksuggestion
-       @param {Object} A 2D array of the board. Remember the actual board is 1-indexed (the 0 indices are the constraints for the board)
+       @param {Game} An object representing a game, most importantly which includes a board state.
        @return {Cell}
     */
-    nextSuggestion(board) {
+    nextSuggestion(game) {
         throw 'Unimplemented';
     }
 }
