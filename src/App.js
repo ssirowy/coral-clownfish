@@ -31,6 +31,7 @@ class App extends Component {
                     suggesters={this.state.gameSuggesters}
                     suggester={this.state.gameSuggester}
                     numSuggestions={this.state.numSuggestions}
+                    suggestionDelay={this.state.suggestionDelay}
                     store={store} />
               <section>
                 <Game game={this.state.game} store={store} />

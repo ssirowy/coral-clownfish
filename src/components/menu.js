@@ -5,7 +5,7 @@ import '../styles/menu.css';
 import coral from '../img/coral.png';
 import clownfish from '../img/clownfish.png';
 
-import { changeIndex, resetGame, changeSuggester, changeNumSuggestions } from '../actions';
+import { changeIndex, resetGame, changeSuggester, changeNumSuggestions, changeSuggestionDelay } from '../actions';
 import sleep from '../utils/sleep';
 
 import Select from 'react-select';
@@ -15,6 +15,10 @@ class Menu extends Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            runningSuggestions: false,
+        };
     }
 
     /**
@@ -25,16 +29,19 @@ class Menu extends Component {
        @param {Game} Game object.
        @return {void}
     */
-    async delegateToSuggester(suggester, numSuggestions, game) {
+    async delegateToSuggester(store, suggester, numSuggestions, game, delay) {
         for (let i = 0; i < numSuggestions; i++) {
-            this.props.store.dispatch(clickCell(suggester.nextSuggestion(game.board)));
-            await sleep(250);
+            store.dispatch(clickCell(suggester.nextSuggestion(game.board)));
+
+            if (delay) {
+                await sleep(delay);
+            }
         }
     }
 
     render() {
 
-        const { currentGame, games, store, suggesters, suggester, numSuggestions } = this.props;
+        const { currentGame, games, store, suggesters, suggester, numSuggestions, suggestionDelay } = this.props;
         const botRunning = false;
         const currentIndex = games.map(game => game.title).indexOf(currentGame.title);
 
@@ -108,19 +115,18 @@ class Menu extends Component {
                      className='number-suggestions' />
 
               <div className='menu-label'>
-                Time between each suggestion?
+                Time between each suggestion? (ms)
               </div>
 
-              <Select name="suggesters"
-                      value={selectedSuggester}
-                      clearable={false}
-                      options={suggesterOptions}
-                      onChange={event => store.dispatch(changeSuggester(suggesters[event.value]))}
-               />
+              <input type='number'
+                     min="1"
+                     value={suggestionDelay}
+                     onChange={event => store.dispatch(changeSuggestionDelay(event.target.value))}
+                     className='number-suggestions' />
 
                 <button className={suggestButtonClassNames}
                       disabled={suggestButtonDisabled}
-                        onClick={() => this.delegateToSuggester(suggester, numSuggestions, currentGame)}
+                        onClick={() => this.delegateToSuggester(store, suggester, numSuggestions, currentGame, suggestionDelay)}
                       >
                   {suggestButtonTitle}
               </button>

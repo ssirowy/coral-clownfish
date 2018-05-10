@@ -1,7 +1,7 @@
 import { predefinedGames } from './utils/predefined-games';
 import suggesters from './suggesters';
 import { interactiveCellTypes } from './utils/constants';
-import { CLICK_CELL, CHANGE_GAME_INDEX, RESET_GAME, CHANGE_SUGGESTER, CHANGE_NUM_SUGGESTIONS } from './actions';
+import { CLICK_CELL, CHANGE_GAME_INDEX, RESET_GAME, CHANGE_SUGGESTER, CHANGE_NUM_SUGGESTIONS, CHANGE_SUGGESTION_DELAY } from './actions';
 import { combineReducers } from 'redux';
 
 /**
@@ -133,7 +133,7 @@ function gameSuggester(state = null, action) {
 }
 
 /**
-   @method numSuggestions
+   @method numSuggestions reducer.
    @return {Integer}
 */
 function numSuggestions(state = 1, action) {
@@ -141,7 +141,19 @@ function numSuggestions(state = 1, action) {
         return state;
     }
 
-    return action.numSuggestions;
+    return action.numSuggestions > 0 ? action.numSuggestions : 1;
+}
+
+/**
+   @method suggestionDelay reducer.
+   @return {Integer}
+*/
+function suggestionDelay(state = 250, action) {
+    if (action.type !== CHANGE_SUGGESTION_DELAY) {
+        return state;
+    }
+
+    return action.delay >= 0 ? action.delay : 250;
 }
 
 /**
@@ -156,6 +168,7 @@ const appStore = combineReducers({
     gameSuggesters,
     gameSuggester,
     numSuggestions,
+    suggestionDelay,
 });
 
 export { appStore };
