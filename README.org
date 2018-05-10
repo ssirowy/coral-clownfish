@@ -15,6 +15,8 @@ and Android play store called Tents and Trees.
 
 [[file:images/app.png][Picture of app]]
 
+#+html: <p align="center"><img src="images/app.png" /></p>
+
 ** Goal of game
 The goal of Coral and Clownfish is to determine where the clownfish should be placed. A board will
 begin in a state where all of the coral are shown.
