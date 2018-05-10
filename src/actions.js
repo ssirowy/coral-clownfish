@@ -3,7 +3,7 @@ export const CLICK_CELL = 'CLICK_CELL';
 export const CHANGE_GAME_INDEX = 'GAME_INDEX';
 export const RESET_GAME = 'RESET_GAME';
 export const CHANGE_SUGGESTER = 'CHANGE_SUGGESTER';
-export const SET_BOT_RUNNING = 'SET_BOT_RUNNING';
+export const CHANGE_NUM_SUGGESTIONS = 'CHANGE_NUM_SUGGESTIONS';
 
 // Simple action creators for game.
 export function clickCell(cell) {
@@ -35,11 +35,13 @@ export function changeSuggester(suggester) {
     };
 }
 
-export function setBotRunning(running) {
+export function changeNumSuggestions(numSuggestions) {
     return {
-        type: SET_BOT_RUNNING,
-        running,
+        type: CHANGE_NUM_SUGGESTIONS,
+        numSuggestions,
     };
 }
+
+
 
 

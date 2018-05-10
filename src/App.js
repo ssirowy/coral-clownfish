@@ -30,7 +30,7 @@ class App extends Component {
                     currentGame={this.state.game}
                     suggesters={this.state.gameSuggesters}
                     suggester={this.state.gameSuggester}
-                    botRunning={this.state.gameBotRunning}
+                    numSuggestions={this.state.numSuggestions}
                     store={store} />
               <section>
                 <Game game={this.state.game} store={store} />

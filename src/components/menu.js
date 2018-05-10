@@ -5,16 +5,37 @@ import '../styles/menu.css';
 import coral from '../img/coral.png';
 import clownfish from '../img/clownfish.png';
 
-import { changeIndex, resetGame, changeSuggester } from '../actions';
+import { changeIndex, resetGame, changeSuggester, changeNumSuggestions } from '../actions';
+import sleep from '../utils/sleep';
 
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
 class Menu extends Component {
 
+    constructor(props) {
+        super(props);
+    }
+
+    /**
+       Method acts as a simple bot for running suggester as many times as user defined.
+       @method delegateToSuggester
+       @param {Suggester} A suggester object.
+       @param {Integer} numSuggestions Number of times to ask for suggestions
+       @param {Game} Game object.
+       @return {void}
+    */
+    async delegateToSuggester(suggester, numSuggestions, game) {
+        for (let i = 0; i < numSuggestions; i++) {
+            this.props.store.dispatch(clickCell(suggester.nextSuggestion(game.board)));
+            await sleep(250);
+        }
+    }
+
     render() {
 
-        const { currentGame, games, store, suggesters, suggester, botRunning } = this.props;
+        const { currentGame, games, store, suggesters, suggester, numSuggestions } = this.props;
+        const botRunning = false;
         const currentIndex = games.map(game => game.title).indexOf(currentGame.title);
 
         // Create a series of options to render in select component.
@@ -80,7 +101,11 @@ class Menu extends Component {
                 How many suggestions?
               </div>
 
-              <input type='number' min="1" className='number-suggestions' />
+              <input type='number'
+                     min="1"
+                     value={numSuggestions}
+                     onChange={event => store.dispatch(changeNumSuggestions(event.target.value))}
+                     className='number-suggestions' />
 
               <div className='menu-label'>
                 Time between each suggestion?
@@ -91,12 +116,11 @@ class Menu extends Component {
                       clearable={false}
                       options={suggesterOptions}
                       onChange={event => store.dispatch(changeSuggester(suggesters[event.value]))}
-
                />
 
                 <button className={suggestButtonClassNames}
                       disabled={suggestButtonDisabled}
-                        onClick={() => store.dispatch(clickCell(suggester.nextSuggestion(currentGame.board)))}
+                        onClick={() => this.delegateToSuggester(suggester, numSuggestions, currentGame)}
                       >
                   {suggestButtonTitle}
               </button>
