@@ -1,0 +1,68 @@
+nav {
+    background-color: #0288D1;
+    color: #F1FAFF;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+h2 {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav img {
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+}
+
+h3 {
+    margin-top: 32px;
+}
+
+.menu-label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    margin-top: 16px;
+}
+
+.number-suggestions {
+    height: 32px;
+    width: 95%;
+    font-size: 16px;
+}
+
+.reset-button {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    font-size: 12px;
+    margin-top: 4px;
+    outline: inherit;
+    padding: 0;
+    text-align: right;
+}
+
+.suggest-button {
+    background: none;
+    background-color: #37C190;
+    border: none;
+    border-radius: 2px;
+    color: white;
+    cursor: pointer;
+    font: inherit;
+    font-size: 16px;
+    margin-top: 8px;
+
+    outline: inherit;
+    padding: 8px 16px;
+    width: 100%;
+}
+
+.suggest-button.disabled {
+    background-color: #c2cddd;
+    color: gray;
+}
