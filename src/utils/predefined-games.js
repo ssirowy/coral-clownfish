@@ -1,69 +1,53 @@
-const fiveEasy = {
-    title: '5x5 Problem 1',
-    board : [
-        [ '-', 'f', 'c', 'c', 'f'  ],
-        [ '-', '-', '-', '-', '-'  ],
-        [ 'c', 'f', '-', '-', '-'  ],
-        [ '-', '-', '-', 'f', '-'  ],
-        [ 'f', 'c', '-', 'c', '-'  ],
-    ],
-};
-const sixEasy = {
-    title: '6x6 Problem 1',
-    board: [
-        [ '-', 'c', '-', '-', 'c', 'f' ],
-        [ '-', 'f', '-', 'f', 'c', 'c' ],
-        [ '-', '-', '-', 'c', '-', 'f' ],
-        [ '-', 'c', '-', 'f', '-', '-' ],
-        [ '-', 'f', '-', '-', '-', '-' ],
-        [ '-', '-', '-', 'c', 'f', '-' ],
-    ],
-};
+const fiveEasy = [
+    [ '-', 'f', 'c', 'c', 'f'  ],
+    [ '-', '-', '-', '-', '-'  ],
+    [ 'c', 'f', '-', '-', '-'  ],
+    [ '-', '-', '-', 'f', '-'  ],
+    [ 'f', 'c', '-', 'c', '-'  ],
+];
 
-const sevenEasy = {
-    title: '7x7 Problem 1',
-    board: [
-        [ '-', '-', 'c', 'f', '-', 'f', '-' ],
-        [ 'f', '-', 'c', '-', '-', 'c', '-' ],
-        [ 'c', '-', 'f', '-', '-', '-', '-' ],
-        [ 'f', 'c', '-', '-', '-', '-', '-' ],
-        [ '-', 'c', 'c', 'f', '-', 'f', 'c' ],
-        [ '-', 'f', '-', '-', '-', '-', '-' ],
-        [ '-', '-', '-', '-', 'f', 'c', '-' ],
-    ],
-};
+const sixEasy =   [
+    [ '-', 'c', '-', '-', 'c', 'f' ],
+    [ '-', 'f', '-', 'f', 'c', 'c' ],
+    [ '-', '-', '-', 'c', '-', 'f' ],
+    [ '-', 'c', '-', 'f', '-', '-' ],
+    [ '-', 'f', '-', '-', '-', '-' ],
+    [ '-', '-', '-', 'c', 'f', '-' ],
+];
 
-const eightEasy = {
-    title: '8x8 Problem 1',
-    board: [
-        [ '-', '-', 'c', 'f', 'c', 'f', 'c', 'f' ],
-        [ '-', 'f', '-', '-', '-', '-', '-', 'c' ],
-        [ '-', 'c', '-', '-', '-', '-', '-', 'f' ],
-        [ '-', '-', 'f', 'c', 'f', '-', '-', 'c' ],
-        [ 'f', '-', 'c', '-', '-', '-', '-', 'f' ],
-        [ 'c', '-', '-', 'f', '-', '-', 'c', '-' ],
-        [ 'f', 'c', '-', 'c', '-', '-', 'f', '-' ],
-        [ '-', 'c', 'f', '-', 'f', 'c', '-', '-' ],
-    ],
 
-};
+const sevenEasy =  [
+    [ '-', '-', 'c', 'f', '-', 'f', '-' ],
+    [ 'f', '-', 'c', '-', '-', 'c', '-' ],
+    [ 'c', '-', 'f', '-', '-', '-', '-' ],
+    [ 'f', 'c', '-', '-', '-', '-', '-' ],
+    [ '-', 'c', 'c', 'f', '-', 'f', 'c' ],
+    [ '-', 'f', '-', '-', '-', '-', '-' ],
+    [ '-', '-', '-', '-', 'f', 'c', '-' ],
+];
 
-const nineEasy = {
-    title: '9x9 Problem 1',
-    board: [
-        [ 'f', '-', '-', '-', 'f', 'c', '-', '-', '-' ],
-        [ 'c', '-', '-', '-', '-', '-', '-', 'f', 'c' ],
-        [ '-', 'f', 'c', '-', '-', 'f', '-', '-', '-' ],
-        [ 'c', '-', '-', 'f', 'c', 'c', '-', '-', '-' ],
-        [ 'f', '-', '-', '-', '-', '-', 'f', 'c', 'f' ],
-        [ '-', 'c', '-', 'c', 'f', '-', '-', '-', 'c' ],
-        [ '-', 'f', '-', '-', '-', 'c', '-', 'f', 'c' ],
-        [ '-', '-', '-', '-', '-', 'f', '-', '-', 'c' ],
-        [ '-', 'f', 'c', 'f', 'c', '-', '-', '-', 'f' ],
-    ],
-};
+const eightEasy = [
+    [ '-', '-', 'c', 'f', 'c', 'f', 'c', 'f' ],
+    [ '-', 'f', '-', '-', '-', '-', '-', 'c' ],
+    [ '-', 'c', '-', '-', '-', '-', '-', 'f' ],
+    [ '-', '-', 'f', 'c', 'f', '-', '-', 'c' ],
+    [ 'f', '-', 'c', '-', '-', '-', '-', 'f' ],
+    [ 'c', '-', '-', 'f', '-', '-', 'c', '-' ],
+    [ 'f', 'c', '-', 'c', '-', '-', 'f', '-' ],
+    [ '-', 'c', 'f', '-', 'f', 'c', '-', '-' ],
+];
 
-// [ '-', '-', '-', '-', '-', '-' ],
+const nineEasy = [
+    [ 'f', '-', '-', '-', 'f', 'c', '-', '-', '-' ],
+    [ 'c', '-', '-', '-', '-', '-', '-', 'f', 'c' ],
+    [ '-', 'f', 'c', '-', '-', 'f', '-', '-', '-' ],
+    [ 'c', '-', '-', 'f', 'c', 'c', '-', '-', '-' ],
+    [ 'f', '-', '-', '-', '-', '-', 'f', 'c', 'f' ],
+    [ '-', 'c', '-', 'c', 'f', '-', '-', '-', 'c' ],
+    [ '-', 'f', '-', '-', '-', 'c', '-', 'f', 'c' ],
+    [ '-', '-', '-', '-', '-', 'f', '-', '-', 'c' ],
+    [ '-', 'f', 'c', 'f', 'c', '-', '-', '-', 'f' ],
+];
 
 const abbreviatedTypes = {
     '-' : 'empty',
@@ -74,11 +58,11 @@ const abbreviatedTypes = {
 /**
    Utility function ot generate a board from a game config aboe.
    @method _generateGame
+   @param {Array}
    @return {Object}
 */
-function _generateGame(config) {
+function _generateGame(board, index) {
 
-    const board = config.board;
     const boardSize = board[0].length;
 
     const newBoard = [ ...Array(boardSize + 1) ].map((x, i) => {
@@ -127,7 +111,7 @@ function _generateGame(config) {
             }
 
             let type = abbreviatedTypes[board[i - 1][j - 1]];
-            const debug = true;
+            const debug = false;
 
             if (!debug) {
                 type = (type === 'clownfish') ? 'empty' : type;
@@ -140,7 +124,7 @@ function _generateGame(config) {
     });
 
     return {
-        title: config.title,
+        title: `Problem ${index}: ${boardSize}x${boardSize}`,
         board: newBoard,
         winner: false,
     };
@@ -148,6 +132,6 @@ function _generateGame(config) {
 
 
 
-const predefinedGames = [ fiveEasy, sixEasy, sevenEasy, eightEasy, nineEasy ].map(game => _generateGame(game));
+const predefinedGames = [ fiveEasy, sixEasy, sevenEasy, eightEasy, nineEasy ].map((game, index) => _generateGame(game, index+1));
 
 export { predefinedGames };
