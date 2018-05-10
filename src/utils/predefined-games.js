@@ -1,39 +1,49 @@
+const fiveEasy = {
+    title: '5x5 Problem 1',
+    board : [
+        [ '-', 'f', 'c', 'c', 'f'  ],
+        [ '-', '-', '-', '-', '-'  ],
+        [ 'c', 'f', '-', '-', '-'  ],
+        [ '-', '-', '-', 'f', '-'  ],
+        [ 'f', 'c', '-', 'c', '-'  ],
+    ],
+};
 const sixEasy = {
     title: '6x6 Problem 1',
     board: [
-        [ 'empty', 'coral', 'empty', 'empty', 'coral', 'clownfish' ],
-        [ 'empty', 'clownfish', 'empty', 'clownfish', 'coral', 'coral' ],
-        [ 'empty', 'empty', 'empty', 'coral', 'empty', 'clownfish' ],
-        [ 'empty', 'coral', 'empty', 'clownfish', 'empty', 'empty' ],
-        [ 'empty', 'clownfish', 'empty', 'empty', 'empty', 'empty' ],
-        [ 'empty', 'empty', 'empty', 'coral', 'clownfish', 'empty' ],
+        [ '-', 'c', '-', '-', 'c', 'f' ],
+        [ '-', 'f', '-', 'f', 'c', 'c' ],
+        [ '-', '-', '-', 'c', '-', 'f' ],
+        [ '-', 'c', '-', 'f', '-', '-' ],
+        [ '-', 'f', '-', '-', '-', '-' ],
+        [ '-', '-', '-', 'c', 'f', '-' ],
     ],
 };
 
 const sevenEasy = {
     title: '7x7 Problem 1',
     board: [
-        [ 'empty', 'empty', 'coral', 'clownfish', 'empty', 'clownfish', 'empty' ],
-        [ 'clownfish', 'empty', 'coral', 'empty', 'empty', 'coral', 'empty' ],
-        [ 'coral', 'empty', 'clownfish', 'empty', 'empty', 'empty', 'empty' ],
-        [ 'clownfish', 'coral', 'empty', 'empty', 'empty', 'empty', 'empty' ],
-        [ 'empty', 'coral', 'coral', 'clownfish', 'empty', 'clownfish', 'coral' ],
-        [ 'empty', 'clownfish', 'empty', 'empty', 'empty', 'empty', 'empty' ],
-        [ 'empty', 'empty', 'empty', 'empty', 'clownfish', 'coral', 'empty' ],
+        [ '-', '-', 'c', 'f', '-', 'f', '-' ],
+        [ 'f', '-', 'c', '-', '-', 'c', '-' ],
+        [ 'c', '-', 'f', '-', '-', '-', '-' ],
+        [ 'f', 'c', '-', '-', '-', '-', '-' ],
+        [ '-', 'c', 'c', 'f', '-', 'f', 'c' ],
+        [ '-', 'f', '-', '-', '-', '-', '-' ],
+        [ '-', '-', '-', '-', 'f', 'c', '-' ],
     ],
 };
 
 const eightEasy = {
     title: '8x8 Problem 1',
     board: [
-        [ 'empty', 'empty', 'coral', 'clownfish', 'coral', 'clownfish', 'coral', 'clownfish' ],
-        [ 'empty', 'clownfish', 'empty', 'empty', 'empty', 'empty', 'empty', 'coral' ],
-        [ 'empty', 'coral', 'empty', 'empty', 'empty', 'empty', 'empty', 'clownfish' ],
-        [ 'empty', 'empty', 'clownfish', 'coral', 'clownfish', 'empty', 'empty', 'coral' ],
-        [ 'clownfish', 'empty', 'coral', 'empty', 'empty', 'empty', 'empty', 'clownfish' ],
-        [ 'coral', 'empty', 'empty', 'clownfish', 'empty', 'empty', 'coral', 'empty' ],
-        [ 'clownfish', 'coral', 'empty', 'coral', 'empty', 'empty', 'clownfish', 'empty' ],
-        [ 'empty', 'coral', 'clownfish', 'empty', 'clownfish', 'coral', 'empty', 'empty' ],
+        [ '-', '-', 'c', 'f', 'c', 'f', 'c', 'f' ],
+        [ '-', 'f', '-', '-', '-', '-', '-', 'c' ],
+        [ '-', 'c', '-', '-', '-', '-', '-', 'f' ],
+        [ '-', '-', 'f', 'c', 'f', '-', '-', 'c' ],
+        [ 'f', '-', 'c', '-', '-', '-', '-', 'f' ],
+        [ 'c', '-', '-', 'f', '-', '-', 'c', '-' ],
+        [ 'f', 'c', '-', 'c', '-', '-', 'f', '-' ],
+        [ '-', 'c', 'f', '-', 'f', 'c', '-', '-' ],
     ],
 
 };
@@ -41,16 +51,24 @@ const eightEasy = {
 const nineEasy = {
     title: '9x9 Problem 1',
     board: [
-        [ 'clownfish', 'empty', 'empty', 'empty', 'clownfish', 'coral', 'empty', 'empty', 'empty' ],
-        [ 'coral', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'clownfish', 'coral' ],
-        [ 'empty', 'clownfish', 'coral', 'empty', 'empty', 'clownfish', 'empty', 'empty', 'empty' ],
-        [ 'coral', 'empty', 'empty', 'clownfish', 'coral', 'coral', 'empty', 'empty', 'empty' ],
-        [ 'clownfish', 'empty', 'empty', 'empty', 'empty', 'empty', 'clownfish', 'coral', 'clownfish' ],
-        [ 'empty', 'coral', 'empty', 'coral', 'clownfish', 'empty', 'empty', 'empty', 'coral' ],
-        [ 'empty', 'clownfish', 'empty', 'empty', 'empty', 'coral', 'empty', 'clownfish', 'coral' ],
-        [ 'empty', 'empty', 'empty', 'empty', 'empty', 'clownfish', 'empty', 'empty', 'coral' ],
-        [ 'empty', 'clownfish', 'coral', 'clownfish', 'coral', 'empty', 'empty', 'empty', 'clownfish' ],
+        [ 'f', '-', '-', '-', 'f', 'c', '-', '-', '-' ],
+        [ 'c', '-', '-', '-', '-', '-', '-', 'f', 'c' ],
+        [ '-', 'f', 'c', '-', '-', 'f', '-', '-', '-' ],
+        [ 'c', '-', '-', 'f', 'c', 'c', '-', '-', '-' ],
+        [ 'f', '-', '-', '-', '-', '-', 'f', 'c', 'f' ],
+        [ '-', 'c', '-', 'c', 'f', '-', '-', '-', 'c' ],
+        [ '-', 'f', '-', '-', '-', 'c', '-', 'f', 'c' ],
+        [ '-', '-', '-', '-', '-', 'f', '-', '-', 'c' ],
+        [ '-', 'f', 'c', 'f', 'c', '-', '-', '-', 'f' ],
     ],
+};
+
+// [ '-', '-', '-', '-', '-', '-' ],
+
+const abbreviatedTypes = {
+    '-' : 'empty',
+    'c' : 'coral',
+    'f' : 'clownfish',
 };
 
 /**
@@ -77,7 +95,7 @@ function _generateGame(config) {
                 let value = 0;
 
                 for (let row = 0; row < boardSize; row++) {
-                    if (board[row][i - 1] === 'clownfish') {
+                    if (board[row][i - 1] === 'f') {
                         value++;
                     }
                 }
@@ -96,7 +114,7 @@ function _generateGame(config) {
                 let value = 0;
 
                 for (let col = 0; col < boardSize; col++) {
-                    if (board[i - 1][col] === 'clownfish') {
+                    if (board[i - 1][col] === 'f') {
                         value++;
                     }
                 }
@@ -108,7 +126,7 @@ function _generateGame(config) {
                 };
             }
 
-            let type = board[i - 1][j - 1];
+            let type = abbreviatedTypes[board[i - 1][j - 1]];
             const debug = false;
 
             if (!debug) {
@@ -130,6 +148,6 @@ function _generateGame(config) {
 
 
 
-const predefinedGames = [ sixEasy, sevenEasy, eightEasy, nineEasy ].map(game => _generateGame(game));
+const predefinedGames = [ fiveEasy, sixEasy, sevenEasy, eightEasy, nineEasy ].map(game => _generateGame(game));
 
 export { predefinedGames };
