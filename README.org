@@ -29,10 +29,20 @@ begin in a state where all of the coral are shown.
 *** Fish can't help coral diagonally
 #+html: <p align="center"><img src="images/rule2-no.png" /></p>
 *** 3) Clownfish need their space and should not be adjacent to each other.
+#+html: <p align="center"><img src="images/rule3-yes.png" /></p>
+*** Vertically, horizontally, or diagonally
+#+html: <p align="center"><img src="images/rule3-no.png" /></p>
 
 *** 4) Row/column constraints.
-The number of clownfish in each row and column is dictated by a constraint presented to left of rows and on the top of columns.
-This should help you figure out where out where clownfish need to be placed.
+Each row and column has a specfic number of fish, defined by constraints.
+#+html: <p align="center"><img src="images/rule4-yes.png" /></p>
+*** All constraints must be satisfied to win.
+#+html: <p align="center"><img src="images/rule4-no.png" /></p>
+
+*** 5) All cells must be filled in.
+#+html: <p align="center"><img src="images/rule5-yes.png" /></p>
+*** Correct fish placement, but not all cells filled in.
+#+html: <p align="center"><img src="images/rule5-no.png" /></p>
 
 * Programming competition
 The original Tents and Trees provides a button to provide a suggestion when you get stuck. The goal of this competition is to
