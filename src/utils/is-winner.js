@@ -9,5 +9,56 @@ export default function isWinner(board) {
     const cols = board[0];
     const rows = board.map(row => row[0]);
 
-    return rows.every(cell => cell.fulfilled) && cols.every(cell => cell.fulfilled);
+    // Make sure row/col constraints are fulfilled.
+    const constraintsFulfilled = rows.every(cell => cell.fulfilled) && cols.every(cell => cell.fulfilled);
+
+    // Make sure fish space constraints are fulfilled.
+
+    // Make sure a fish defined at rowIndex, columnIndex has space.
+    // No fish can be around in its immediate vicinity.
+    const hasSpace = function(rowIndex, columnIndex) {
+
+        const cells = [];
+
+        if (rowIndex >= 1 && columnIndex >= 1) {
+            cells.push(board[ rowIndex - 1 ][ columnIndex - 1 ])
+        }
+        if (columnIndex >= 1) {
+            cells.push(board[ rowIndex ][ columnIndex - 1 ])
+        }
+        if (rowIndex >= 1) {
+            cells.push(board[ rowIndex - 1 ][ columnIndex ]);
+        }
+        if (rowIndex <= board.length -2 && columnIndex >= 1) {
+            cells.push(board[ rowIndex + 1 ][ columnIndex - 1 ]);
+        }
+        if (rowIndex <= board.length -2) {
+            cells.push(board[ rowIndex + 1 ][ columnIndex ]);
+        }
+        // Bottom left
+        if (rowIndex >= 1 && columnIndex <= board.length - 2) {
+            cells.push(board[ rowIndex - 1 ][ columnIndex + 1 ]);
+        }
+        // Bottom
+        if (columnIndex <= board.length - 2) {
+            cells.push(board[ rowIndex     ][ columnIndex + 1 ]);
+        }
+        // Bottom right
+        if (rowIndex <= board.length -2 && columnIndex <= board.length -2) {
+            cells.push(board[ rowIndex + 1 ][ columnIndex + 1 ]);
+        }
+
+        return !cells.some(cell => cell.type === 'clownfish');
+    }
+
+    let fishHaveSpace = true;
+    board.forEach((row, rowIndex) => {
+        row.forEach((cell, columnIndex) => {
+            if (cell.type === 'clownfish' && !hasSpace(rowIndex, columnIndex)) {
+                fishHaveSpace = false;
+            }
+        });
+    });
+
+    return constraintsFulfilled && fishHaveSpace;
 }
