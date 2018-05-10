@@ -33,16 +33,23 @@ class Menu extends Component {
         for (let i = 0; i < numSuggestions; i++) {
             store.dispatch(clickCell(suggester.nextSuggestion(game.board)));
 
-            if (delay) {
+            if (delay && numSuggestions > 1) {
+                this.setState({
+                    runningSuggestions: true,
+                });
+
                 await sleep(delay);
             }
         }
+
+        this.setState({
+            runningSuggestions: false,
+        })
     }
 
     render() {
 
         const { currentGame, games, store, suggesters, suggester, numSuggestions, suggestionDelay } = this.props;
-        const botRunning = false;
         const currentIndex = games.map(game => game.title).indexOf(currentGame.title);
 
         // Create a series of options to render in select component.
@@ -69,9 +76,9 @@ class Menu extends Component {
         }
 
         const suggestButtonDisabled = (selectedSuggester === null);
-        const disabledClass = (suggestButtonDisabled || botRunning) ? 'disabled' : null
+        const disabledClass = (suggestButtonDisabled || this.state.runningSuggestions) ? 'disabled' : null
         const suggestButtonClassNames = `suggest-button ${disabledClass}`;
-        const suggestButtonTitle = botRunning ? 'Running' : 'Make a suggestion';
+        const suggestButtonTitle = this.state.runningSuggestions ? 'Running' : 'Make a suggestion';
 
         return (
             <nav>
@@ -85,12 +92,14 @@ class Menu extends Component {
                       value={selectedGameOption}
                       clearable={false}
                       options={gameOptions}
+                      disabled={this.state.runningSuggestions}
                       onChange={event => store.dispatch(changeIndex(event.value))}
               />
-              <button className='reset-button'
-                      onClick={() => store.dispatch(resetGame(currentIndex))}>
-                Reset
-              </button>
+                <button className='reset-button'
+                        disabled={this.state.runningSuggestions}
+                        onClick={() => store.dispatch(resetGame(currentIndex))}>
+                  Reset
+                </button>
 
               <h3>Suggestions welcome</h3>
 
@@ -100,6 +109,7 @@ class Menu extends Component {
               <Select name="suggesters"
                       value={selectedSuggester}
                       clearable={false}
+                      disabled={this.state.runningSuggestions}
                       options={suggesterOptions}
                       onChange={event => store.dispatch(changeSuggester(suggesters[event.value]))}
 
@@ -111,6 +121,7 @@ class Menu extends Component {
               <input type='number'
                      min="1"
                      value={numSuggestions}
+                     disabled={this.state.runningSuggestions}
                      onChange={event => store.dispatch(changeNumSuggestions(event.target.value))}
                      className='number-suggestions' />
 
@@ -120,6 +131,7 @@ class Menu extends Component {
 
               <input type='number'
                      min="1"
+                     disabled={this.state.runningSuggestions}
                      value={suggestionDelay}
                      onChange={event => store.dispatch(changeSuggestionDelay(event.target.value))}
                      className='number-suggestions' />
