@@ -64,12 +64,63 @@ function _boardCompleted(board) {
     return !board.some(row => row.some(cell => cell.type === 'empty'));
 }
 
+/**
+   Utility function to determin if all row and column constraints have been satisified.
+   @method _rowColConstraintsFulfilled(board)
+   @param {Board} Game board.
+   @return {Boolean}
+*/
 function _rowColConstraintsFulfilled(board) {
     // Pull all row and column constraints. We'll use to determine if board is showing a winner.
     const cols = board[0];
     const rows = board.map(row => row[0]);
 
     return rows.every(cell => cell.fulfilled) && cols.every(cell => cell.fulfilled);
+}
+
+/**
+   Utility function if all coral have a clownfish to keep them healthy.
+   @method _coralHaveFish
+   @param {Board} Game board.
+   @return {Boolean}
+*/
+function _coralHaveFish(board) {
+
+    // Make sure an indidivual coral defined at rowIndex, columnIndex has a fish around it.
+    const hasFish = function(rowIndex, columnIndex) {
+
+        const cells = [];
+
+        // Top
+        if (columnIndex >= 1) {
+            cells.push(board[ rowIndex ][ columnIndex - 1 ])
+        }
+        // Left
+        if (rowIndex >= 1) {
+            cells.push(board[ rowIndex - 1 ][ columnIndex ]);
+        }
+        // Right
+        if (rowIndex <= board.length -2) {
+            cells.push(board[ rowIndex + 1 ][ columnIndex ]);
+        }
+        // Bottom
+        if (columnIndex <= board.length - 2) {
+            cells.push(board[ rowIndex     ][ columnIndex + 1 ]);
+        }
+
+        return cells.some(cell => cell.type === 'clownfish');
+    }
+
+    let coralHaveFish = true;
+    board.forEach((row, rowIndex) => {
+        row.forEach((cell, columnIndex) => {
+            if (cell.type === 'coral' && !hasFish(rowIndex, columnIndex)) {
+                coralHaveFish = false;
+            }
+        });
+    });
+
+    return coralHaveFish;
 }
 
 /**
@@ -84,27 +135,26 @@ export function isWinner(board) {
 
 export function isLoser(board) {
 
-    let value = false;
     let reason = null;
 
     if (!_boardCompleted(board)) {
         return {
-            value,
+            value: false,
         };
     }
 
-
     if (!_rowColConstraintsFulfilled(board)) {
-        value = true;
         reason = 'Row and/or column constraints not fulfilled';
     }
+    else if (!_coralHaveFish(board)) {
+        reason = 'You left some coral stranded!';
+    }
     else if (!_fishHaveSpace(board)) {
-        value = true;
         reason = 'Clownfish need room to swim, they can’t be adjacent to each other';
     }
 
     return {
-        value,
+        value : (reason !== null),
         reason,
     };
 }
