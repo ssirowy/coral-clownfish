@@ -34,7 +34,9 @@ class App extends Component {
                     suggestionDelay={this.state.suggestionDelay}
                     store={store} />
               <section>
-                <Game game={this.state.game} store={store} />
+                <Game game={this.state.game}
+                      lastClickedCell={this.state.lastClickedCell}
+                      store={store} />
               </section>
             </div>
         );

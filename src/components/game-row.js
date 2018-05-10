@@ -14,6 +14,7 @@ class GameRow extends Component {
                                                row={this.props.rowIndex}
                                                column={i}
                                                cell={cell}
+                                               lastClickedCell={this.props.lastClickedCell}
                                                store={this.props.store}/>
                                     )
               }

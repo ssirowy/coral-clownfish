@@ -10,10 +10,11 @@ class Game extends Component {
 
         return (
             <GameRow key={i}
-                      row={row}
-                      rowIndex={i}
-                      store={this.props.store}
-                      />
+                     row={row}
+                     rowIndex={i}
+                     lastClickedCell={this.props.lastClickedCell}
+                     store={this.props.store}
+                     />
         );
     }
 

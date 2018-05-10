@@ -1,4 +1,5 @@
 .cell {
+    border: 1px solid transparent;
     cursor: pointer;
     display: flex;
     flex-grow: 1;
@@ -11,6 +12,23 @@
     color: #305A88;
     font-size: 16px;
     justify-content: center;
+}
+
+.last-clicked {
+    outline: 0 solid #ecbe01;
+    animation: cell-clicked-animation .1s;
+}
+
+@keyframes cell-clicked-animation {
+    0% {
+        outline-width: 0;
+    }
+    50% {
+        outline-width: 4px;
+    }
+    100% {
+        outline-width: 0;
+    }
 }
 
 .fulfilled {

@@ -10,8 +10,15 @@ class Cell extends Component {
 
     render() {
 
-        const cell = this.props.cell;
-        const classNames = `cell ${cell.type}`;
+        const { cell, lastClickedCell, row, column } = this.props;
+        let lastClickedClass = '';
+
+        if (lastClickedCell &&
+            row === lastClickedCell.row &&
+            column === lastClickedCell.column) {
+            lastClickedClass = 'last-clicked';
+        }
+        const classNames = `cell ${cell.type} ${lastClickedClass}`;
 
         if (cell.type === 'coral') {
             return (

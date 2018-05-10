@@ -156,6 +156,17 @@ function suggestionDelay(state = 250, action) {
     return action.delay >= 0 ? action.delay : 250;
 }
 
+function lastClickedCell(state = null, action) {
+    if (action.type !== CLICK_CELL) {
+        return state;
+    }
+
+    return {
+        row: action.row,
+        column: action.column,
+    };
+}
+
 /**
    Main app store for our game.
    @method appStore
@@ -169,6 +180,7 @@ const appStore = combineReducers({
     gameSuggester,
     numSuggestions,
     suggestionDelay,
+    lastClickedCell,
 });
 
 export { appStore };
