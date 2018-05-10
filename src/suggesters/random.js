@@ -23,10 +23,15 @@ export default class RandomSuggester extends Suggester {
        @return {Cell}
     */
     nextSuggestion(board) {
-        const size = board.length;
-        const randomRow = this._getRandomInt(1, size);
-        const randomColumn = this._getRandomInt(1, size);
+        const size = board.length - 1;
+        let row, column  = 0;
 
-        return new Cell(randomRow, randomColumn);
+        // Pick a non coral cell
+        do {
+            row = this._getRandomInt(1, size);
+            column = this._getRandomInt(1, size);
+        } while (board[row][column].type == 'coral');
+
+        return new Cell(row, column);
     }
 }
