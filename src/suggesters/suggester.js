@@ -1,6 +1,7 @@
 /**
    This defines the basic interface of a suggester. You should override this class and then write
    your own suggestion algorithm.
+   @class Suggester
 */
 export default class Suggester {
 

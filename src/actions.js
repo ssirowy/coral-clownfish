@@ -5,9 +5,17 @@ export const RESET_GAME = 'RESET_GAME';
 export const CHANGE_SUGGESTER = 'CHANGE_SUGGESTER';
 export const CHANGE_NUM_SUGGESTIONS = 'CHANGE_NUM_SUGGESTIONS';
 export const CHANGE_SUGGESTION_DELAY = 'CHANGE_SUGGESTION_DELAY';
+export const NOOP = 'NOOP';
 
 // Simple action creators for game.
 export function clickCell(cell) {
+
+    if (!cell) {
+        return {
+            type: NOOP,
+        };
+    }
+    
     return {
         type: CLICK_CELL,
         row: cell.row,
