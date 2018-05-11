@@ -49,6 +49,19 @@ const nine = [
     [ '-', 'f', 'c', 'f', 'c', '-', '-', '-', 'f' ],
 ];
 
+const ten = [
+    [ 'f', 'c', 'f', '-', '-', '-', '-', '-', 'c', 'f'],
+    [ 'c', '-', '-', '-', '-', 'c', '-', '-', '-', '-'],
+    [ '-', '-', '-', '-', '-', 'f', '-', '-', 'c', 'f'],
+    [ 'f', 'c', 'c', 'f', '-', '-', '-', '-', '-', '-'],
+    [ '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+    [ 'f', 'c', 'f', '-', 'f', 'c', 'f', '-', '-', 'f'],
+    [ 'c', 'c', '-', '-', 'c', '-', 'c', '-', '-', 'c'],
+    [ '-', 'f', '-', '-', 'f', 'c', 'f', '-', 'f', '-'],
+    [ 'c', '-', '-', '-', '-', '-', '-', '-', 'c', '-'],
+    [ 'f', '-', '-', 'c', 'f', '-', 'f', 'c', 'f', 'c'],
+];
+
 const abbreviatedTypes = {
     '-' : 'empty',
     'c' : 'coral',
@@ -133,6 +146,6 @@ function _generateGame(board, index) {
 
 
 
-const predefinedGames = [ five, six, seven, eight, nine ].map((game, index) => _generateGame(game, index));
+const predefinedGames = [ five, six, seven, eight, nine, ten ].map((game, index) => _generateGame(game, index));
 
 export { predefinedGames };
