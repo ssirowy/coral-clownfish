@@ -8,6 +8,7 @@ section {
 h1 {
     color: #305A88;
     margin: 0;
+    text-align: center;
 }
 
 .game-container {
@@ -26,9 +27,10 @@ h1 {
 
 .instructions {
     color: #305A88;
-    font-size: 12px;
+    font-size: 14px;
+    font-style: italic;
     margin-top: 16px;
-    margin-left: 32px;
+    text-align: right;
 }
 
 .loser {

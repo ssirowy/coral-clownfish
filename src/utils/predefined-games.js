@@ -111,7 +111,7 @@ function _generateGame(board, index) {
             }
 
             let type = abbreviatedTypes[board[i - 1][j - 1]];
-            const debug = false;
+            const debug = true;
 
             if (!debug) {
                 type = (type === 'clownfish') ? 'empty' : type;

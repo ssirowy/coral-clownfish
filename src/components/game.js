@@ -24,14 +24,13 @@ class Game extends Component {
     render() {
 
         const loser = isLoser(this.props.game.board);
-        const winner = isWinner(this.props.game.board);
         const message = loser.value ? loser.reason : 'Click non-coral cells to toggle';
         const loserClass = loser.value ? 'loser' : '';
         const instructionsClassNames = `instructions ${loserClass}`;
 
         return (
             <div>
-              <h1>{this.props.game.title} {winner && '- Winner'}</h1>
+              <h1>{this.props.game.title}</h1>
                 <div className="game-container">
                   {
                       this.props.game.board.map((row, i) => this.generateRow(i))
@@ -39,7 +38,7 @@ class Game extends Component {
                 </div>
                 <div className={instructionsClassNames}>{message}</div>
                 <ReactModal
-                  isOpen={winner}
+                  isOpen={isWinner(this.props.game.board)}
                   className="winner-modal"
                   overlayClassName='modal-overlay'
                   ariaHideApp={false}
