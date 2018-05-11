@@ -130,7 +130,9 @@ function _coralHaveFish(board) {
    @return {Boolean}
 */
 export function isWinner(board) {
-    return _rowColConstraintsFulfilled(board) && _fishHaveSpace(board);
+    return _rowColConstraintsFulfilled(board) &&
+        _fishHaveSpace(board) &&
+        _coralHaveFish(board);
 }
 
 export function isLoser(board) {

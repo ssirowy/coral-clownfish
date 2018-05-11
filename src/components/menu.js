@@ -8,6 +8,8 @@ import clownfish from '../img/clownfish.png';
 import { changeIndex, resetGame, changeSuggester, changeNumSuggestions, changeSuggestionDelay } from '../actions';
 import sleep from '../utils/sleep';
 
+import { isWinner } from '../utils/winner-loser';
+
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
@@ -29,9 +31,17 @@ class Menu extends Component {
        @param {Game} Game object.
        @return {void}
     */
-    async delegateToSuggester(store, suggester, numSuggestions, game, delay) {
+    async delegateToSuggester(suggester, numSuggestions, delay) {
         for (let i = 0; i < numSuggestions; i++) {
-            store.dispatch(clickCell(suggester.nextSuggestion(game)));
+
+            const game = this.props.currentGame;
+
+            // No more need for suggestions.
+            if (isWinner(game.board)) {
+                break;
+            }
+
+            this.props.store.dispatch(clickCell(suggester.nextSuggestion(game)));
 
             if (delay && numSuggestions > 1) {
                 this.setState({
@@ -138,7 +148,7 @@ class Menu extends Component {
 
                 <button className={suggestButtonClassNames}
                       disabled={suggestButtonDisabled}
-                        onClick={() => this.delegateToSuggester(store, suggester, numSuggestions, currentGame, suggestionDelay)}
+                        onClick={() => this.delegateToSuggester(suggester, numSuggestions, suggestionDelay)}
                       >
                   {suggestButtonTitle}
               </button>
