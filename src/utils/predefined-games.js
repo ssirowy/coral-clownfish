@@ -1,4 +1,4 @@
-const fiveEasy = [
+const five = [
     [ '-', 'f', 'c', 'c', 'f'  ],
     [ '-', '-', '-', '-', '-'  ],
     [ 'c', 'f', '-', '-', '-'  ],
@@ -6,7 +6,7 @@ const fiveEasy = [
     [ 'f', 'c', '-', 'c', '-'  ],
 ];
 
-const sixEasy =   [
+const six =   [
     [ '-', 'c', '-', '-', 'c', 'f' ],
     [ '-', 'f', '-', 'f', 'c', 'c' ],
     [ '-', '-', '-', 'c', '-', 'f' ],
@@ -16,7 +16,7 @@ const sixEasy =   [
 ];
 
 
-const sevenEasy =  [
+const seven =  [
     [ '-', '-', 'c', 'f', '-', 'f', '-' ],
     [ 'f', '-', 'c', '-', '-', 'c', '-' ],
     [ 'c', '-', 'f', '-', '-', '-', '-' ],
@@ -26,7 +26,7 @@ const sevenEasy =  [
     [ '-', '-', '-', '-', 'f', 'c', '-' ],
 ];
 
-const eightEasy = [
+const eight = [
     [ '-', '-', 'c', 'f', 'c', 'f', 'c', 'f' ],
     [ '-', 'f', '-', '-', '-', '-', '-', 'c' ],
     [ '-', 'c', '-', '-', '-', '-', '-', 'f' ],
@@ -37,7 +37,7 @@ const eightEasy = [
     [ '-', 'c', 'f', '-', 'f', 'c', '-', '-' ],
 ];
 
-const nineEasy = [
+const nine = [
     [ 'f', '-', '-', '-', 'f', 'c', '-', '-', '-' ],
     [ 'c', '-', '-', '-', '-', '-', '-', 'f', 'c' ],
     [ '-', 'f', 'c', '-', '-', 'f', '-', '-', '-' ],
@@ -133,6 +133,6 @@ function _generateGame(board, index) {
 
 
 
-const predefinedGames = [ fiveEasy, sixEasy, sevenEasy, eightEasy, nineEasy ].map((game, index) => _generateGame(game, index));
+const predefinedGames = [ five, six, seven, eight, nine ].map((game, index) => _generateGame(game, index));
 
 export { predefinedGames };
