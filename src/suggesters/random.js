@@ -1,5 +1,5 @@
 import Suggester from './suggester';
-import Cell from './cell';
+import CellSuggestion from './cell-suggestion';
 
 export default class RandomSuggester extends Suggester {
 
@@ -33,6 +33,6 @@ export default class RandomSuggester extends Suggester {
             column = this._getRandomInt(1, size);
         } while (game.board[row][column].type == 'coral');
 
-        return new Cell(row, column);
+        return new CellSuggestion(row, column);
     }
 }

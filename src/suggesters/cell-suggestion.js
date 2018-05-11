@@ -1,7 +1,7 @@
-export default class Cell {
+export default class CellSuggestion {
 
     /**
-       Cell constructor. Mostly defined to define what a cell structure is.
+       Cell suggestion constructor.
        @method constructor
        @param {Integer} row Cell row.
        @param {Integer} columns Cell column.
