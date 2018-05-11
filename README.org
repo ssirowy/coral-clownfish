@@ -51,8 +51,13 @@ The original game provides a button to provide a suggestion when stuck.
 
 ** Write your own
 The goal of this competition is to write a suggester to provide a suggestion for what cell to click next.
-*** Completing the game
-Combined with a bot that can run N moves automatically, your suggester should be able to complete a series of predefined puzzles.
+I have written a basic framework to write a suggestion algorithm given a board state, and your goal will be to write
+a suggester to plug in.
+** Suggester engine
+#+html: <p align="center"><img src="images/suggester.png" /></p>
+** Task
+Write a suggester that when plugged in can solve all the provided games. It doesn't necessarily matter how many moves it requires,
+but it should be able to solve the game effectively unassisted but pressing "Make suggestion" N times.
 
 * Setup
 This game is built using [[https://reactjs.org/][React]] and a couple of extra small libraries.  The game also uses [[https://redux.js.org/][Redux]] to maintain state.  You won't really
