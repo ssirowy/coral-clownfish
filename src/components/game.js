@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import ReactModal from 'react-modal';
 import GameRow from './game-row';
 import { isWinner, isLoser } from '../utils/winner-loser';
 import '../styles/game.css';
+import steve from '../img/steve.png';
 
 class Game extends Component {
 
@@ -34,6 +36,33 @@ class Game extends Component {
                   }
                 </div>
                 <div className={instructionsClassNames}>{message}</div>
+                              <ReactModal
+                isOpen={true}
+                className="winner-modal"
+                overlayClassName='modal-overlay'
+                >
+                <div className='modal-content'>
+                  <h1>You saved the reef!</h1>
+                  <div className='container'>
+                    <p>
+                      All the clownfish have found a happy coral home. Ocean levels
+                      will maintain, the polar ice caps with stop melting, and Steve
+                      Zissou approves.
+                    </p>
+                    <img className='steve'
+                         src={steve} />
+                  </div>
+                  <div className='actions'>
+                    <button className='green-button'
+                            onClick={() => console.log('Steve!')}
+                      >
+                      Reset game
+                    </button>
+                  </div>
+                </div>
+              </ReactModal>
+
+
             </div>
         );
     }

@@ -34,3 +34,41 @@ h1 {
 .loser {
     color: #E24E56;
 }
+
+.winner-modal {
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: 500px;
+    height: auto;
+}
+
+.modal-overlay {
+    background-color: translucent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.modal-content {
+    margin: 16px;
+}
+
+.modal-content h1 {
+    text-align: center;
+    color: #0288D1;
+}
+
+.modal-content .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-content img {
+    max-width: 100%;
+    height: 150px;
+}

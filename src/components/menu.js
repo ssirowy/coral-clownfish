@@ -77,7 +77,7 @@ class Menu extends Component {
 
         const suggestButtonDisabled = (selectedSuggester === null);
         const disabledClass = (suggestButtonDisabled || this.state.runningSuggestions) ? 'disabled' : null
-        const suggestButtonClassNames = `suggest-button ${disabledClass}`;
+        const suggestButtonClassNames = `green-button ${disabledClass}`;
         const suggestButtonTitle = this.state.runningSuggestions ? 'Running' : 'Make a suggestion';
 
         return (

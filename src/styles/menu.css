@@ -46,7 +46,7 @@ h3 {
     text-align: right;
 }
 
-.suggest-button {
+.green-button {
     background: none;
     background-color: #37C190;
     border: none;
@@ -62,7 +62,7 @@ h3 {
     width: 100%;
 }
 
-.suggest-button.disabled {
+.green-button.disabled {
     background-color: #c2cddd;
     color: gray;
 }
