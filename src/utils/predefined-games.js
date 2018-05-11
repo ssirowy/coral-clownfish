@@ -124,14 +124,15 @@ function _generateGame(board, index) {
     });
 
     return {
-        title: `Problem ${index}: ${boardSize}x${boardSize}`,
+        title: `Problem ${index+1}: ${boardSize}x${boardSize}`,
         board: newBoard,
         winner: false,
+        index: index,
     };
 };
 
 
 
-const predefinedGames = [ fiveEasy, sixEasy, sevenEasy, eightEasy, nineEasy ].map((game, index) => _generateGame(game, index+1));
+const predefinedGames = [ fiveEasy, sixEasy, sevenEasy, eightEasy, nineEasy ].map((game, index) => _generateGame(game, index));
 
 export { predefinedGames };

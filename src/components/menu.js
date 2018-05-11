@@ -97,7 +97,7 @@ class Menu extends Component {
               />
                 <button className='reset-button'
                         disabled={this.state.runningSuggestions}
-                        onClick={() => store.dispatch(resetGame(currentIndex))}>
+                        onClick={() => store.dispatch(resetGame(currentGame))}>
                   Reset
                 </button>
 

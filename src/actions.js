@@ -22,10 +22,10 @@ export function changeIndex(index) {
     };
 }
 
-export function resetGame(index) {
+export function resetGame(game) {
     return {
         type: RESET_GAME,
-        index,
+        game,
     };
 }
 

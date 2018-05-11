@@ -26,8 +26,12 @@ function _nextCellType(type) {
 function game(state = predefinedGames[0], action) {
 
     // Game index and reset.  Return a predefined game.
-    if (action.type === CHANGE_GAME_INDEX || action.type === RESET_GAME) {
+    if (action.type === CHANGE_GAME_INDEX) {
         return predefinedGames[action.index];
+    }
+
+    if (action.type === RESET_GAME) {
+        return predefinedGames[action.game.index];
     }
 
     // If its any other action we don't know about, just return state back.
@@ -85,6 +89,7 @@ function game(state = predefinedGames[0], action) {
     return {
         title: state.title,
         board,
+        index: state.index,
     };
 }
 
