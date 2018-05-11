@@ -24,8 +24,6 @@ export default class RandomSuggester extends Suggester {
     */
     nextSuggestion(game) {
 
-        return new Cell(2, 1);
-        
         const size = game.board.length - 1;
         let row, column  = 0;
 

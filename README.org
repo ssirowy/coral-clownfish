@@ -58,6 +58,34 @@ a suggester to plug in.
 ** Task
 Write a suggester that when plugged in can solve all the provided games. It doesn't necessarily matter how many moves it requires,
 but it should be able to solve the game effectively unassisted but pressing "Make suggestion" N times.
+*** Step 1 - Fork my github repo
+https://github.com/ssirowy/coral-clownfish
+#+html: <p align="center"><img src="images/github.png" /></p>
+*** Step 2 - Write a new suggester
+At its heart, you are really going to implement one method.
+#+BEGIN_SRC bash
+    /**
+       Overridden method of base class. Will return a random cell to click.
+       @method nextSuggestion
+       @param {Game} Game object
+       @return {Cell}
+    */
+    nextSuggestion(game) {
+
+        const size = game.board.length - 1;
+        let row, column  = 0;
+
+        // Pick a non coral cell
+        do {
+            row = this._getRandomInt(1, size);
+            column = this._getRandomInt(1, size);
+        } while (game.board[row][column].type == 'coral');
+
+        return new Cell(row, column);
+    }
+#+END_SRC
+*** Step 3 - Demonstrate that it can solve all the defined games!
+#+html: <p align="center"><img src="images/games.png" /></p>
 
 * Setup
 This game is built using [[https://reactjs.org/][React]] and a couple of extra small libraries.  The game also uses [[https://redux.js.org/][Redux]] to maintain state.  You won't really
