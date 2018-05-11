@@ -15,13 +15,12 @@ and [[https://play.google.com/store/apps/details?id=com.frozax.tentsandtrees&hl=
 #+html: <p align="center"><img src="images/app.png" /></p>
 
 ** Goal of game
-A board will begin in a state where all of the coral are shown.
-The goal of Coral and Clownfish is to determine where the clownfish should be placed.
+The goal of Coral and Clownfish is to save the reef and determine where the clownfish should be placed.
 
 #+html: <p align="center"><img src="images/starting-screen.png" /></p>
 
-** Rules/Constraints
-*** 1) Each piece of coral has one clownfish connected to it.
+** Clownfish can be placed subject to some rules.
+*** 1) Each piece of coral needs at least one clownfish connected to it.
 #+html: <p align="center"><img src="images/rule1-yes.png" /></p>
 *** Do not leave a straggling coral behind
 #+html: <p align="center"><img src="images/rule1-no.png" /></p>
@@ -57,7 +56,7 @@ a suggester to plug in.
 #+html: <p align="center"><img src="images/suggester.png" /></p>
 ** Task
 Write a suggester that when plugged in can solve all the provided games. It doesn't necessarily matter how many moves it requires,
-but it should be able to solve the game effectively unassisted but pressing "Make suggestion" N times.
+but it should be able to solve the game effectively unassisted but pressing "Make suggestion" N times (within reason)
 *** Step 1 - Fork my github repo
 https://github.com/ssirowy/coral-clownfish
 #+html: <p align="center"><img src="images/github.png" /></p>
@@ -93,7 +92,7 @@ At its heart, you are really going to implement one method.
   #+html: <p align="center"><img src="images/board.png" /></p>
 
 ** Board state types
-   Constraint cells with be 1-indexed. Clickable board cells are effectively 1-indexed.
+   Constraint cells with be 0-indexed. Clickable board cells are effectively 1-indexed.
 #+BEGIN_SRC javascript
 // Constraint cell
 {
