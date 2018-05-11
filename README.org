@@ -80,7 +80,7 @@ At its heart, you are really going to implement one method.
             column = this._getRandomInt(1, size);
         } while (game.board[row][column].type == 'coral');
 
-        return new Cell(row, column);
+        return new CellSuggestion(row, column);
     }
 #+END_SRC
 *** Step 3 - Demonstrate that it can solve all the defined games!
@@ -102,7 +102,7 @@ At its heart, you are really going to implement one method.
 
 // Actual board cell
 {
-    type: 'empty',  // might also take on 'clownfish', or 'coral'
+    type: 'empty',  // might also take on 'clownfish', or 'water'
 }
 #+END_SRC
 
