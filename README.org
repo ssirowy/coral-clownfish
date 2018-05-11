@@ -9,14 +9,14 @@
 #+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Programming competition">
 
 * Coral and clownfish
-Coral and clownfish is a clone of a popular game called Tents and Trees (found on both the Apple app store,
-and Android play store)
+Coral and clownfish is a clone of a popular game called Tents and Trees (found on both the [[https://itunes.apple.com/us/app/tents-and-trees-puzzles/id1279378379?mt=8][Apple app store]],
+and [[https://play.google.com/store/apps/details?id=com.frozax.tentsandtrees&hl=en_US][Android play store]])
 
 #+html: <p align="center"><img src="images/app.png" /></p>
 
 ** Goal of game
-The goal of Coral and Clownfish is to determine where the clownfish should be placed. A board will
-begin in a state where all of the coral are shown.
+A board will begin in a state where all of the coral are shown.
+The goal of Coral and Clownfish is to determine where the clownfish should be placed.
 
 #+html: <p align="center"><img src="images/starting-screen.png" /></p>
 
@@ -63,7 +63,7 @@ https://github.com/ssirowy/coral-clownfish
 #+html: <p align="center"><img src="images/github.png" /></p>
 *** Step 2 - Write a new suggester
 At its heart, you are really going to implement one method.
-#+BEGIN_SRC bash
+#+BEGIN_SRC javascript
     /**
        Overridden method of base class. Will return a random cell to click.
        @method nextSuggestion
@@ -86,6 +86,26 @@ At its heart, you are really going to implement one method.
 #+END_SRC
 *** Step 3 - Demonstrate that it can solve all the defined games!
 #+html: <p align="center"><img src="images/games.png" /></p>
+
+* Board state
+  For a board for size N, The board is represented as an (N+1)*(N+1) 2D array
+  where the row and column constraints are also represnted as cells.
+  #+html: <p align="center"><img src="images/board.png" /></p>
+
+** Board state types
+   Constraint cells with be 1-indexed. Clickable board cells are effectively 1-indexed.
+#+BEGIN_SRC javascript
+// Constraint cell
+{
+    type: 'constraint',
+    value: 5,
+}
+
+// Actual board cell
+{
+    type: 'empty',  // might also take on 'clownfish', or 'coral'
+}
+#+END_SRC
 
 * Setup
 This game is built using [[https://reactjs.org/][React]] and a couple of extra small libraries.  The game also uses [[https://redux.js.org/][Redux]] to maintain state.  You won't really
