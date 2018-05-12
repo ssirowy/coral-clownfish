@@ -144,7 +144,8 @@ export default class BaileySuggester extends Suggester {
        @return {Cell}
     */
     nextSuggestion(game) {
-        if (this.initialized === undefined) {
+        if (this.initialized === undefined || (game.board.length != this.size)) {
+            this.size = game.board.length
             this.stack = [];
             this.initialized = true;
 
