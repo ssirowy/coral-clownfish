@@ -18,8 +18,6 @@ export default class BaileySuggester extends Suggester {
     // The key insights here are that the coral can be iteratively processed one at a time in order.
     // If any coral has 0 possible placements of clownfish, because constraints are violated,
     // then the placement of a fish to an earlier processed coral must have been invalid.
-    //
-    // This suggestor
 
     fillInWater(game) {
         // Returns the last cell that is empty water.
@@ -137,6 +135,21 @@ export default class BaileySuggester extends Suggester {
     }
 
 
+    isStartState(game) {
+        let startState = true;
+
+        game.board.forEach(row => {
+            row.forEach(cell => {
+                if (['empty', 'none', 'coral', 'constraint'].indexOf(cell.type) === -1) {
+                    console.log(cell);
+                    startState = false;
+                }
+            });
+        });
+        console.log(startState);
+        return startState;
+    }
+
     /**
        Overridden method of base class. Performs the next step in a depth first search.
        @method nextSuggestion
@@ -144,7 +157,7 @@ export default class BaileySuggester extends Suggester {
        @return {Cell}
     */
     nextSuggestion(game) {
-        if (this.initialized === undefined || (game.board.length != this.size)) {
+        if (this.initialized === undefined || (game.board.length != this.size) || this.isStartState(game)) {
             this.size = game.board.length
             this.stack = [];
             this.initialized = true;
