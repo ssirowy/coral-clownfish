@@ -5,40 +5,45 @@ export default class JakeSuggester extends Suggester {
 
     // Method to check if there arent't any fish touching the row/cell given. If true, means that
     // we are attempting to place a fish in a valid location.
-    noFishTouching(game, rowIndex, columnIndex) {
+    noFishTouching(game, fishLocations, rowIndex, columnIndex) {
         let board = game.board;
         let cells = []
 
-        // Check there are no fish touching the row/col cell
-        if (rowIndex >= 1 && columnIndex >= 1) {
-            cells.push(board[ rowIndex - 1 ][ columnIndex - 1 ])
-        }
-        if (columnIndex >= 1) {
-            cells.push(board[ rowIndex ][ columnIndex - 1 ])
-        }
-        if (rowIndex >= 1) {
-            cells.push(board[ rowIndex - 1 ][ columnIndex ]);
-        }
-        if (rowIndex <= board.length -2 && columnIndex >= 1) {
-            cells.push(board[ rowIndex + 1 ][ columnIndex - 1 ]);
-        }
-        if (rowIndex <= board.length -2) {
-            cells.push(board[ rowIndex + 1 ][ columnIndex ]);
-        }
-        // Bottom left
-        if (rowIndex >= 1 && columnIndex <= board.length - 2) {
-            cells.push(board[ rowIndex - 1 ][ columnIndex + 1 ]);
-        }
-        // Bottom
-        if (columnIndex <= board.length - 2) {
-            cells.push(board[ rowIndex     ][ columnIndex + 1 ]);
-        }
-        // Bottom right
-        if (rowIndex <= board.length -2 && columnIndex <= board.length -2) {
-            cells.push(board[ rowIndex + 1 ][ columnIndex + 1 ]);
+        // Place the fish before checking
+        for(let i = 0; i < fishLocations.length; i++) {
+            let flRow = fishLocations[i].row;
+            let flCol = fishLocations[i].col;
+
+            if (flRow == rowIndex - 1 && flCol == columnIndex - 1) {
+                return false;
+            }
+            if (flRow == rowIndex && flCol == columnIndex - 1) {
+                return false;                
+            }
+            if (flRow == rowIndex - 1 && flCol == columnIndex) {
+                return false;
+            }
+            if (flRow == rowIndex + 1 && flCol == columnIndex - 1) {
+                return false;
+            }
+            if (flRow == rowIndex + 1 && flCol == columnIndex) {
+                return false;
+            }
+            // Bottom left
+            if (flRow == rowIndex - 1 && flCol == columnIndex + 1) {
+                return false;
+            }
+            // Bottom
+            if (flRow == rowIndex && flCol == columnIndex + 1) {
+                return false;
+            }
+            // Bottom right
+            if (flRow == rowIndex + 1 && flCol == columnIndex + 1) {
+                return false;
+            }
         }
 
-        return !cells.some(cell => cell.type === 'clownfish');
+        return true;
     }
 
     // Method that returns the next valid row/col position of the fish the move the board toward a more valid state.
@@ -60,29 +65,11 @@ export default class JakeSuggester extends Suggester {
             numFishInCols[fishLocations[x].col - 1]++;
         }
 
-        let waterSurrounding = [];
-
-        // Return locations of water surrounding this coral
-        waterLocations.forEach(waterLocation => {
-            if (waterLocation.row == rowIdx+1 && waterLocation.col == colIdx) {
-                waterSurrounding.push('bottom');
-            }
-            if (waterLocation.row == rowIdx && waterLocation.col == colIdx-1) {
-                waterSurrounding.push('left');
-            }
-            if (waterLocation.row == rowIdx-1 && waterLocation.col == colIdx) {
-                waterSurrounding.push('top');
-            }
-            if (waterLocation.row == rowIdx && waterLocation.col == colIdx+1) {
-                waterSurrounding.push('right');
-            }
-        });
-
         // TOP
-        if (rowIdx > 1 && waterSurrounding.includes('top') &&
+        if (rowIdx > 1 && game.board[rowIdx-1][colIdx].type == 'water' &&
             numFishInRows[rowIdx-2] < rowConstraints[rowIdx-2] &&
             numFishInCols[colIdx-1] < colConstraints[colIdx-1] &&
-            this.noFishTouching(game, rowIdx-1, colIdx)) {
+            this.noFishTouching(game, fishLocations, rowIdx-1, colIdx)) {
             let testc = currentCoral + 1;
 
             let flc = fishLocations.slice(0);
@@ -100,17 +87,17 @@ export default class JakeSuggester extends Suggester {
         }
 
         // LEFT
-        if (colIdx > 1 && waterSurrounding.includes('left') &&
+        if (colIdx > 1 && game.board[rowIdx][colIdx-1].type == 'water' &&
             numFishInRows[rowIdx-1] < rowConstraints[rowIdx-1] &&
             numFishInCols[colIdx-2] < colConstraints[colIdx-2] &&
-            this.noFishTouching(game, rowIdx, colIdx-1)) {
+            this.noFishTouching(game, fishLocations, rowIdx, colIdx-1)) {
             let testb = currentCoral + 1;
 
             let flb = fishLocations.slice(0);
             flb.push({row: rowIdx, col: colIdx-1});
 
             if (flb.length == coralLocations.length) {
-                 return {row: rowIdx, col: colIdx-1}
+                return {row: rowIdx, col: colIdx-1}
             }
             else {
                 let nextClickLocation = this.findNextFish(game, flb, waterLocations, coralLocations, testb, rowConstraints, colConstraints)
@@ -120,11 +107,32 @@ export default class JakeSuggester extends Suggester {
             }
         }
 
+        // Right
+        if (colIdx < game.board.length - 1 && game.board[rowIdx][colIdx+1].type == 'water' &&
+            numFishInRows[rowIdx-1] < rowConstraints[rowIdx-1] &&
+            numFishInCols[colIdx] < colConstraints[colIdx] &&
+            this.noFishTouching(game, fishLocations, rowIdx, colIdx+1)) {
+
+            let testd = currentCoral + 1;
+            let fld = fishLocations.slice(0);
+            fld.push({row: rowIdx, col: colIdx+1});
+
+            if (fld.length == coralLocations.length) {
+                return {row: rowIdx, col: colIdx+1}
+            }
+            else {
+                let nextClickLocation = this.findNextFish(game, fld, waterLocations, coralLocations, testd, rowConstraints, colConstraints)
+                if (nextClickLocation) {
+                    return nextClickLocation;
+                }
+            }
+        }
+
         // Bottom
-        if (rowIdx < game.board.length - 1 && waterSurrounding.includes('bottom') &&
+        if (rowIdx < game.board.length - 1 && game.board[rowIdx+1][colIdx].type == 'water' &&
             numFishInRows[rowIdx] < rowConstraints[rowIdx] &&
             numFishInCols[colIdx-1] < colConstraints[colIdx-1] &&
-            this.noFishTouching(game, rowIdx+1, colIdx)) {
+            this.noFishTouching(game, fishLocations, rowIdx+1, colIdx)) {
             let test = currentCoral + 1;
 
             // shallow copy of fish locations
@@ -136,27 +144,6 @@ export default class JakeSuggester extends Suggester {
             }
             else {
                 let nextClickLocation = this.findNextFish(game, fla, waterLocations, coralLocations, test, rowConstraints, colConstraints)
-                if (nextClickLocation) {
-                    return nextClickLocation;
-                }
-            }
-        }
-
-        // Right
-        if (colIdx < game.board.length - 1 && waterSurrounding.includes('right') &&
-            numFishInRows[rowIdx-1] < rowConstraints[rowIdx-1] &&
-            numFishInCols[colIdx] < colConstraints[colIdx] &&
-            this.noFishTouching(game, rowIdx, colIdx+1)) {
-
-            let testd = currentCoral + 1;
-            let fld = fishLocations.slice(0);
-            fld.push({row: rowIdx, col: colIdx+1});
-
-            if (fld.length == coralLocations.length) {
-                return {row: rowIdx, col: colIdx+1}
-            }
-            else {
-                let nextClickLocation = this.findNextFish(game, fld, waterLocations, coralLocations, testd, rowConstraints, colConstraints)
                 if (nextClickLocation) {
                     return nextClickLocation;
                 }
