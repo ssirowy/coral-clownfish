@@ -17,7 +17,7 @@ export default class Suggester {
 
     /**
        Returns name of suggester.
-       @method getTitle
+       @method getName
        @return {String}
     */
     getName() {
