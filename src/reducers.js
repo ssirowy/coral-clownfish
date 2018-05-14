@@ -141,7 +141,7 @@ function gameSuggester(state = null, action) {
    @method numSuggestions reducer.
    @return {Integer}
 */
-function numSuggestions(state = 1, action) {
+function numSuggestions(state = 111, action) {
     if (action.type !== CHANGE_NUM_SUGGESTIONS) {
         return state;
     }
@@ -153,7 +153,7 @@ function numSuggestions(state = 1, action) {
    @method suggestionDelay reducer.
    @return {Integer}
 */
-function suggestionDelay(state = 250, action) {
+function suggestionDelay(state = 25, action) {
     if (action.type !== CHANGE_SUGGESTION_DELAY) {
         return state;
     }
